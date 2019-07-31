@@ -122,7 +122,7 @@ class BashCommandsHelp:
 def BashCommandsSwitch(argument, helpRequested):
     commands = BashCommands() if not helpRequested else BashCommandsHelp()
     switchOptions = {
-        'ipconfig': commands.IpConfig,
+        'getip': commands.IpConfig,
         'addsuspicioususer': commands.AddSuspiciousUser,
         'suspiciousnohup': commands.SuspiciousNohup,
         'reverseshell': commands.ReverseShell,
@@ -147,5 +147,5 @@ def BashCommandsSwitch(argument, helpRequested):
 
 
 class Bash:
-    def RunBashCommand(self, command, helpRequested=False):
-        BashCommandsSwitch(str.lower(command), helpRequested)
+    def RunBashCommand(self, request):
+        BashCommandsSwitch(str.lower(request[1]), "--help" in request)
