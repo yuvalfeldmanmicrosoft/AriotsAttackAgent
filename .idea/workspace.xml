@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="18d4f685-5b87-4468-8335-a73e544c5d36" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/venv/AttackAgent/BatchCommands/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AttackAgent.py" beforeDir="false" afterPath="$PROJECT_DIR$/AttackAgent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Colors.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/AaSystem/Colors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/AttackAgent/Bash/BashCommands.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/AttackAgent/Bash/BashCommands.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/BaseCommandHandling/BaseCommands.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/AttackAgent/BaseCommands/BaseCommands.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/BaseCommandHandling/BatchCommandHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/AttackAgent/BatchCommands/BatchCommandHandler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/BaseCommandHandling/CommandExecutor.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/AttackAgent/BaseCommands/CommandExecutor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/BaseCommandHandling/CommandQueue.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/AttackAgent/BaseCommands/CommandQueue.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/BaseCommandHandling/RequestBuilder.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/AttackAgent/BaseCommands/RequestBuilder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/BaseCommandHandling/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/AttackAgent/BaseCommands/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/AttackAgent/BaseCommands/BaseCommands.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/AttackAgent/BaseCommands/BaseCommands.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,7 +22,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1Ogu9rmimioyNowRuf7hnLrstLT" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
