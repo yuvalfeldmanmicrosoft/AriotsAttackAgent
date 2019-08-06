@@ -1,4 +1,4 @@
-from Colors import PrintRed
+from venv.AaSystem.Colors import PrintRed
 from venv.AttackAgent.Bash.BashCommandExecutor import RunSubProcess
 
 
@@ -167,8 +167,8 @@ def GetBashCommandsSwitch(helpRequested=False):
 
 
 def HelpRequested(availableCommands):
-    print("Command parameters: -ba [BashCommand]\n"
-          "-ba: stands for Bash Attack. -ba commands run bash code aimed at triggering alerts supporting larger attack"
+    print("Command parameters: ba [BashCommand]\n"
+          "ba: stands for Bash Attack. ba commands run bash code aimed at triggering alerts supporting larger attack"
           "functions\n"
           "     'BashCommand' - The type of Bash Command that will be run"
           "     Possible BashCommands:")

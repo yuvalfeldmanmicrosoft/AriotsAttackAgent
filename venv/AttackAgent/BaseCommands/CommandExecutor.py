@@ -1,8 +1,7 @@
-from Colors import PrintRed, PrintBlue
-from venv.BaseCommandHandling.CommandQueue import CommandQueueNotEmpty, DeQueueCommand, EmptyCommandQueue
-from venv.BaseCommandHandling.RequestBuilder import ParseRequest
-from venv.BaseCommandHandling.BaseCommands import *
-
+from venv.AaSystem.Colors import PrintRed, PrintBlue
+from venv.AttackAgent.BaseCommands.BaseCommands import *
+from venv.AttackAgent.BaseCommands.CommandQueue import CommandQueueNotEmpty, DeQueueCommand, EmptyCommandQueue
+from venv.AttackAgent.BaseCommands.RequestBuilder import ParseRequest
 
 def RunCommands():
     while CommandQueueNotEmpty():

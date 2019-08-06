@@ -1,0 +1,6 @@
+ba getip -help
+ba getip -help
+run -p help2
+ba getip -help
+run -p helpall
+ba getip -help

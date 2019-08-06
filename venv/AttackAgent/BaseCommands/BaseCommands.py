@@ -1,4 +1,4 @@
-from venv.BaseCommandHandling.BatchCommandHandler import AddCommandsBatch
+from venv.AttackAgent.BatchCommands.BatchCommandHandler import AddCommandsBatch
 from venv.AttackAgent.Bash.BashCommands import RunBashCommand
 
 
@@ -11,6 +11,6 @@ def BashAttackCommand(request):
 
 
 CommandsSwitch = {
-    "-ba": BashAttackCommand,
-    "-run": AddCommandsBatch
+    "ba": BashAttackCommand,
+    "run": AddCommandsBatch
 }

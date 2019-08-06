@@ -1,6 +1,6 @@
 import sys
-from venv.BaseCommandHandling.CommandQueue import EnqueueCommand
-from venv.BaseCommandHandling.CommandExecutor import RunCommands
+from venv.AttackAgent.BaseCommands.CommandExecutor import RunCommands
+from venv.AttackAgent.BaseCommands.CommandQueue import EnqueueCommand
 
 
 def WaitForInput():
