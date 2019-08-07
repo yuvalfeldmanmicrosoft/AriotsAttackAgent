@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from venv.AaSystem.Colors import PrintRed
 import ntpath
 from venv.AttackAgent.BaseCommands.CommandQueue import EnqueueCommandsNext

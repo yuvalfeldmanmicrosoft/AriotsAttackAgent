@@ -1,9 +1,13 @@
+#!/usr/bin/python3
 from venv.AaSystem.Colors import PrintRed
+from venv.AaSystem.SystemInspector import GetOperatingSystemName
 from venv.AttackAgent.Bash.BashCommandExecutor import RunSubProcess
 
 
 class BashCommands:
     def IpConfig(self):
+        if str.lower(GetOperatingSystemName()) == "linux":
+            return RunSubProcess("ifconfig -a")
         return RunSubProcess("ipconfig")
 
     def AddSuspiciousUser(self):
@@ -174,7 +178,7 @@ def HelpRequested(availableCommands):
           "     Possible BashCommands:")
     for command in availableCommands:
         print(f"            {command}")
-    print("     For more information on a command add -help after a command, i.e.: '-ba getip -help'")
+    print("     For more information on a command add -help after a command, i.e.: 'ba getip -help'")
 
 
 def PerformCustomCommand(request):

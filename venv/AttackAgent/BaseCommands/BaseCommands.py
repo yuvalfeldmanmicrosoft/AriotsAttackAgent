@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from venv.AttackAgent.BatchCommands.BatchCommandHandler import AddCommandsBatch
 from venv.AttackAgent.Bash.BashCommands import RunBashCommand
 from venv.AttackAgent.AttackAgentSystemCommands.AaSystemCommands import RunAaSystemCommand

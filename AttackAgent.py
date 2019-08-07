@@ -1,8 +1,9 @@
+#!/usr/bin/python3
 import sys
-from venv.AaSystem.AriotsShield import RunningOnPermittedMachine
-from venv.AaSystem.Colors import PrintRed
 from venv.AttackAgent.BaseCommands.CommandExecutor import RunCommands
 from venv.AttackAgent.BaseCommands.CommandQueue import EnqueueCommand
+from venv.AaSystem.AriotsShield import RunningOnPermittedMachine
+from venv.AaSystem.Colors import PrintRed
 
 
 def WaitForInput():

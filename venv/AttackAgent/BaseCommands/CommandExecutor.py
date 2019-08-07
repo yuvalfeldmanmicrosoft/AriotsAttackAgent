@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from venv.AaSystem.Colors import PrintRed, PrintBlue
 from venv.AttackAgent.BaseCommands.BaseCommands import *
 from venv.AttackAgent.BaseCommands.CommandQueue import CommandQueueNotEmpty, DeQueueCommand, EmptyCommandQueue

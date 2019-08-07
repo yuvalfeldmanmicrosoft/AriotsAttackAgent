@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import subprocess
 
 from venv.AaSystem.Colors import PrintRed
