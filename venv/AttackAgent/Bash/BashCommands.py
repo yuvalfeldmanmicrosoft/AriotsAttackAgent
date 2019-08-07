@@ -177,6 +177,12 @@ def HelpRequested(availableCommands):
     print("     For more information on a command add -help after a command, i.e.: '-ba getip -help'")
 
 
+def PerformCustomCommand(request):
+    if not request:
+        PrintRed("Missing bash command")
+    return RunSubProcess(request[0])
+
+
 def RunBashCommand(request):
     if not request:
         PrintRed(f"No Bash command to execute passed in parameters")
@@ -185,6 +191,9 @@ def RunBashCommand(request):
     availableBashCommands = GetBashCommandsSwitch().keys()
     if command == "-help":
         HelpRequested(availableBashCommands)
+        return
+    if command == "-c":
+        PerformCustomCommand(request[1:])
         return
     if command not in availableBashCommands:
         PrintRed(f"No such Bash Attack: '{command}'")

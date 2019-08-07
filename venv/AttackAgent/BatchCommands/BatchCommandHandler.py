@@ -27,8 +27,9 @@ def HelpRequested():
           "     'CommandsBatchName' - The name of the pre made batch commands script, the available batch commands are:")
     for commandName in GetAllPreMadeBatchNames():
         print(f"            {commandName}")
-    print("     Each command must be separated by a new line\n"
-          "     It is possible to recursively add additional batch -run calls using a batch file")
+    print("Each command must be separated by a new line\n"
+          "It is possible to recursively add additional batch -run calls using a batch file"
+          "Lines in Command Batch Files can be commented out by adding # to the start of the line")
 
 
 def AddCommandsBatch(request):
@@ -59,7 +60,7 @@ def AddCommandsBatch(request):
         filePath = f"{PreMadeBatchCommandsPath}{filePath}"
     try:
         with open(filePath, "r") as file:
-            commandLines = list(file.read().splitlines())
+            commandLines = list(filter(lambda a: not a.startswith('#'), list(file.read().splitlines())))
             print(f"Adding {len(commandLines)} Commands from {ntpath.basename(filePath)}")
             EnqueueCommandsNext(commandLines)
         file.close()
