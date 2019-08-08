@@ -24,7 +24,7 @@ def HelpRequested():
           "the front of the queue\n"
           "sc: Attack Agent System Commands - will perform program and environment commands such as waiting, looping, "
           "handling environment variables and so on\n"
-          "upgrade: Upgrades to latest version of Ariots Attack Agent (currently only supported on linux machines)")
+          "upgrade: Upgrades to latest version of Ariots Attack Agent - currently only supported on linux machines")
 
 
 def CommandExists(userInput):
