@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+from venv.AaSystem.AaUpgrade import UpgradeAaToLatestVerstion
 from venv.AttackAgent.BatchCommands.BatchCommandHandler import AddCommandsBatch
 from venv.AttackAgent.Bash.BashCommands import RunBashCommand
 from venv.AttackAgent.AttackAgentSystemCommands.AaSystemCommands import RunAaSystemCommand
@@ -16,8 +17,13 @@ def AaSystemCommand(request):
     RunAaSystemCommand(request)
 
 
+def AaUpgrade(request):
+    UpgradeAaToLatestVerstion(request)
+
+
 CommandsSwitch = {
     "ba": BashAttackCommand,
     "run": AddCommandsBatch,
-    "sc": AaSystemCommand
+    "sc": AaSystemCommand,
+    "upgrade": AaUpgrade
 }
