@@ -2,8 +2,9 @@
 from venv.AaSystem.Colors import PrintRed
 import time
 
+from venv.AttackAgent.BaseCommands.CommandQueue import EnqueueCommandsNext
 
-WaitRequestConversionsFromSeconds = {
+TimeConversionsFromSeconds = {
     "-s": 1,
     "-m": 60,
     "-h": 3600,
@@ -20,22 +21,39 @@ class AaSystemCommands:
         requestedTimeType = request[0]
         waitTimeRequested = request[1]
 
-        if requestedTimeType not in WaitRequestConversionsFromSeconds.keys():
+        if requestedTimeType not in TimeConversionsFromSeconds.keys():
             PrintRed(f"Requested wait type '{requestedTimeType}' not valid type")
             return
 
         try:
-            WaitTime = float(waitTimeRequested) * WaitRequestConversionsFromSeconds[requestedTimeType]
+            WaitTime = float(waitTimeRequested) * TimeConversionsFromSeconds[requestedTimeType]
         except ValueError:
             PrintRed("The Wait time entered is not a valid number")
             return
 
         time.sleep(WaitTime)
 
+    def Loop(self, request):
+        if not request or len(request) < 2:
+            PrintRed("Missing required parameters")
+            return
+        iterations = request[0]
+        command = request[1]
+        try:
+            commandsList = []
+            intIterations = int(iterations)
+            for i in range(intIterations):
+                commandsList.append(command)
+            EnqueueCommandsNext(commandsList)
+        except Exception as ex:
+            print(f"Failed to execute Loop on repetitions: {iterations}, command: {command}:\n")
+            PrintRed(ex)
+            return
+
 
 class AaSystemCommandsHelp:
     def Wait(self, request):
-        print("Sleeps for a requested amount of time"
+        print("Sleeps for a requested amount of time\n"
               "Command parameters: [WaitTimeType] [WaitTime]\n"
               "'WaitTimeType' - The time format that for the WaitTime parameter, available options:\n"
               "     -s: seconds\n"
@@ -44,11 +62,18 @@ class AaSystemCommandsHelp:
               "     -d: days\n"
               "'WaitTime: The amount of time that will be waited'")
 
+    def Loop(self, request):
+        print("A for loop on the provided function\n"
+              "Command parameteres: [Repetitions] [Command]\n"
+              "'Repetitions' - An integer indicating the amount of times to perform the provided function\n"
+              "'Command' - an Attack Agent function surrounded by parentheses that will be repeated in the loop")
+
 
 def AaSystemCommandsSwitch(helpRequested=False):
     commands = AaSystemCommands() if not helpRequested else AaSystemCommandsHelp()
     switchOptions = {
-        'wait': commands.Wait
+        'wait': commands.Wait,
+        'loop': commands.Loop
     }
 
     return switchOptions
