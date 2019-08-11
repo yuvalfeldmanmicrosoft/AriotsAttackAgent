@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from venv.AaSystem.Colors import PrintRed
+from venv.AaSystem.Log import PrintRedAndLog, WriteToLog
 from venv.AaSystem.SystemInspector import GetOperatingSystemName, GetEnvironmentVariableWindows, \
     GetEnvironmentVariableLinux
 
@@ -9,7 +9,7 @@ SupportedOsTypes = ["windows", "linux"]
 
 def IsSupportedOs(OperatingSystem):
     if OperatingSystem not in SupportedOsTypes:
-        PrintRed(f"Operating system: '{OperatingSystem}' not supported")
+        PrintRedAndLog(f"Operating system: '{OperatingSystem}' not supported")
         return False
     return True
 
@@ -22,5 +22,6 @@ def HasAriotsEnvironmentVariable(OperatingSystem):
 
 def RunningOnPermittedMachine():
     OperatingSystem = str.lower(GetOperatingSystemName())
+    WriteToLog(f"Operating system detected: {OperatingSystem}")
     PermittedToRunOnMachine = IsSupportedOs(OperatingSystem) and HasAriotsEnvironmentVariable(OperatingSystem)
     return PermittedToRunOnMachine

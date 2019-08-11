@@ -1,12 +1,13 @@
 #!/usr/bin/python3
 import subprocess
-
-from venv.AaSystem.Colors import PrintRed
+from venv.AaSystem.Log import PrintAndLog, PrintRedAndLog, WriteToLog, PrintBlueAndLog
 
 
 def RunSubProcess(commandLineInput):
     try:
-        subprocess.run(commandLineInput, shell=True, check=True)
+        PrintBlueAndLog(f"Running shell command: {commandLineInput}")
+        result = subprocess.run(commandLineInput, shell=True, check=True, stdout=subprocess.PIPE)
+        PrintAndLog(result.stdout.decode('utf-8'))
     except Exception as ex:
-        print(f"Failed execute bash command '{commandLineInput}', exception encountered:\n")
-        PrintRed(ex)
+        PrintAndLog(f"Failed execute bash command '{commandLineInput}', exception encountered:\n")
+        PrintRedAndLog(ex)

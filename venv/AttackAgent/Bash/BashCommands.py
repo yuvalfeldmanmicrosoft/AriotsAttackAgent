@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from venv.AaSystem.Colors import PrintRed
+from venv.AaSystem.Log import PrintAndLog, PrintRedAndLog
 from venv.AaSystem.SystemInspector import GetOperatingSystemName
 from venv.AttackAgent.Bash.BashCommandExecutor import RunSubProcess
 
@@ -67,80 +67,80 @@ class BashCommands:
 
 class BashCommandsHelp:
     def IpConfig(self):
-        return print("Performs the bash command: 'ipconfig'\n"
-                     "Meant as a simple code functionality and sanity test")
+        return PrintAndLog("Performs the bash command: 'ipconfig'\n"
+                           "Meant as a simple code functionality and sanity test")
 
     def AddSuspiciousUser(self):
-        return print("Performs the bash command: 'sudo useradd aaa -g 0'\n"
-                     "Triggers alert: 'AddSuspiciousUser'")
+        return PrintAndLog("Performs the bash command: 'sudo useradd aaa -g 0'\n"
+                           "Triggers alert: 'AddSuspiciousUser'")
 
     def SuspiciousNohup(self):
-        return print("Performs the bash command: 'nohup cat /tmp/'\n"
-                     "Triggers alert: 'SuspiciousNohup'")
+        return PrintAndLog("Performs the bash command: 'nohup cat /tmp/'\n"
+                           "Triggers alert: 'SuspiciousNohup'")
 
     def ReverseShell(self):
-        return print("Performs the bash command: 'python import socket /bin/sh'\n"
-                     "Triggers alert: 'ReverseShell'")
+        return PrintAndLog("Performs the bash command: 'python import socket /bin/sh'\n"
+                           "Triggers alert: 'ReverseShell'")
 
     def RemovelOfSystemLogs(self):
-        return print("Performs the bash command: 'rm /var/log/lastlog'\n"
-                     "Triggers alert: 'RemovelOfSystemLogs'")
+        return PrintAndLog("Performs the bash command: 'rm /var/log/lastlog'\n"
+                           "Triggers alert: 'RemovelOfSystemLogs'")
 
     def Ransomware(self):
-        return print("Performs the bash command: 'touch test.GNNCRY'\n"
-                     "Triggers alert: 'Ransomware'")
+        return PrintAndLog("Performs the bash command: 'touch test.GNNCRY'\n"
+                           "Triggers alert: 'Ransomware'")
 
     def PrivilegedContainer(self):
-        return print("Performs the bash command: 'docker run redis --privileged'\n"
-                     "Triggers alert: 'PrivilegedContainer'")
+        return PrintAndLog("Performs the bash command: 'docker run redis --privileged'\n"
+                           "Triggers alert: 'PrivilegedContainer'")
 
     def PossibleMalware(self):
-        return print("Performs the bash command: 'curl pastebin.com'\n"
-                     "Triggers alert: 'PossibleMalware'")
+        return PrintAndLog("Performs the bash command: 'curl pastebin.com'\n"
+                           "Triggers alert: 'PossibleMalware'")
 
     def OverrideLinuxFiles(self):
-        return print("Performs the bash command: 'cp /bin/netstat a'\n"
-                     "Triggers alert: 'OverrideLinuxFiles'")
+        return PrintAndLog("Performs the bash command: 'cp /bin/netstat a'\n"
+                           "Triggers alert: 'OverrideLinuxFiles'")
 
     def LinuxReconnaissance(self):
-        return print("Performs the bash command: 'uname -n -s -r -v'\n"
-                     "Triggers alert: 'LinuxReconnaissance'")
+        return PrintAndLog("Performs the bash command: 'uname -n -s -r -v'\n"
+                           "Triggers alert: 'LinuxReconnaissance'")
 
     def LinuxBackdoor(self):
-        print("Performs the bash command: 'touch d-bus notifier'\n"
-              "Triggers alert: 'LinuxBackdoor'")
+        return PrintAndLog("Performs the bash command: 'touch d-bus notifier'\n"
+                           "Triggers alert: 'LinuxBackdoor'")
 
     def FairwareMalware(self):
-        return print("Performs the bash command: 'rm -rf /data/'\n"
-                     "Triggers alert: 'FairwareMalware'")
+        return PrintAndLog("Performs the bash command: 'rm -rf /data/'\n"
+                           "Triggers alert: 'FairwareMalware'")
 
     def EgressData(self):
-        return print("Performs the bash command: 'bash /dev/tcp/'\n"
-                     "Triggers alert: 'EgressData'")
+        return PrintAndLog("Performs the bash command: 'bash /dev/tcp/'\n"
+                           "Triggers alert: 'EgressData'")
 
     def DownloadFileThenRun(self):
-        return print("Performs the bash command: 'curl google.com | sh'\n"
-                     "Triggers alert: 'DownloadFileThenRun'")
+        return PrintAndLog("Performs the bash command: 'curl google.com | sh'\n"
+                           "Triggers alert: 'DownloadFileThenRun'")
 
     def DisableFirewall(self):
-        return print("Performs the bash command: 'touch f0VMRgIBAQ'\n"
-                     "Triggers alert: 'DisableFirewall'")
+        return PrintAndLog("Performs the bash command: 'touch f0VMRgIBAQ'\n"
+                           "Triggers alert: 'DisableFirewall'")
 
     def DisableAuditdLogging(self):
-        return print("Performs the bash command: 'sudo service auditd stop'\n"
-                     "Triggers alert: 'DisableAuditdLogging'")
+        return PrintAndLog("Performs the bash command: 'sudo service auditd stop'\n"
+                           "Triggers alert: 'DisableAuditdLogging'")
 
     def CryptoMiner(self):
-        return print("Performs the bash command: 'git clone https://github.com/cpuminer'\n"
-                     "Triggers alert: 'CryptoMiner'")
+        return PrintAndLog("Performs the bash command: 'git clone https://github.com/cpuminer'\n"
+                           "Triggers alert: 'CryptoMiner'")
 
     def CommonBots(self):
-        return print("Performs the bash command: 'touch RTEGFN01.dat'\n"
-                     "Triggers alert: 'CommonBots'")
+        return PrintAndLog("Performs the bash command: 'touch RTEGFN01.dat'\n"
+                           "Triggers alert: 'CommonBots'")
 
     def ClearHistoryFile(self):
-        return print("Performs the bash command: 'history -c'\n"
-                     "Triggers alert: 'ClearHistoryFile'")
+        return PrintAndLog("Performs the bash command: 'history -c'\n"
+                           "Triggers alert: 'ClearHistoryFile'")
 
 
 def GetBashCommandsSwitch(helpRequested=False):
@@ -171,25 +171,28 @@ def GetBashCommandsSwitch(helpRequested=False):
 
 
 def HelpRequested(availableCommands):
-    print("Command parameters: ba [BashCommand]\n"
-          "ba: stands for Bash Attack. ba commands run bash code aimed at triggering alerts supporting larger attack"
-          "functions\n"
-          "     'BashCommand' - The type of Bash Command that will be run"
-          "     Possible BashCommands:")
+    text = "Command parameters: ba [BashCommand]\n" \
+           "ba: stands for Bash Attack. ba commands run bash code aimed at triggering alerts supporting "\
+           "larger attack functions\n"\
+           "     'BashCommand' - The type of Bash Command that will be run\n" \
+           "     Possible BashCommands:\n"
     for command in availableCommands:
-        print(f"            {command}")
-    print("     For more information on a command add -help after a command, i.e.: 'ba getip -help'")
+        text = f"{text}            {command}\n"
+    text = f"{text}It is also possible to pass your own bash code by passing the argument -c and then the code "\
+           "in parentheses, i.e.: attackagent ba -c 'ipconfig'\n"\
+           "For more information on a command add -help after a command, i.e.: 'ba getip -help'"
+    PrintAndLog(text)
 
 
 def PerformCustomCommand(request):
     if not request:
-        PrintRed("Missing bash command")
+        PrintRedAndLog("Missing bash command")
     return RunSubProcess(request[0])
 
 
 def RunBashCommand(request):
     if not request:
-        PrintRed(f"No Bash command to execute passed in parameters")
+        PrintRedAndLog(f"No Bash command to execute passed in parameters")
         return
     command = str.lower(request[0])
     availableBashCommands = GetBashCommandsSwitch().keys()
@@ -200,7 +203,7 @@ def RunBashCommand(request):
         PerformCustomCommand(request[1:])
         return
     if command not in availableBashCommands:
-        PrintRed(f"No such Bash Attack: '{command}'")
+        PrintRedAndLog(f"No such Bash Attack: '{command}'")
         return
     bashCommandHelpRequested = "-help" in request
     GetBashCommandsSwitch(bashCommandHelpRequested)[command]()

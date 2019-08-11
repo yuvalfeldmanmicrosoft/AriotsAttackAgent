@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from venv.AaSystem.Colors import PrintRed, PrintBlue
+from venv.AaSystem.Log import PrintAndLog, PrintBlueAndLog, PrintRedAndLog
 from venv.AttackAgent.BaseCommands.BaseCommands import *
 from venv.AttackAgent.BaseCommands.CommandQueue import CommandQueueNotEmpty, DeQueueCommand, EmptyCommandQueue
 from venv.AttackAgent.BaseCommands.RequestBuilder import ParseRequest
@@ -16,15 +16,18 @@ def RunCommands():
 
 
 def HelpRequested():
-    print("All commands follow the format - [CommandType] [CommandsParameter] [CommandsParameter] ...\n"
-          "Type -help with any CommandType for more information on that command\n\n"
-          "Available CommandsTypes:\n"
-          "ba: Bash Attacks using bash commands to perform tasks\n"
-          "run: References text files containing a row delimited list of commands to run, places these commands at "
-          "the front of the queue\n"
-          "sc: Attack Agent System Commands - will perform program and environment commands such as waiting, looping, "
-          "handling environment variables and so on\n"
-          "upgrade: Upgrades to latest version of Ariots Attack Agent - currently only supported on linux machines")
+    PrintAndLog("All commands follow the format - [CommandType] [CommandsParameter] [CommandsParameter] ...\n"
+                "Type -help with any CommandType for more information on that command\n\n"
+                "Available CommandsTypes:\n"
+                "ba: Bash Attacks using bash commands to perform tasks\n"
+                "run: References text files containing a row delimited list of commands to run, "
+                "places these commands at "
+                "the front of the queue\n"
+                "sc: Attack Agent System Commands - will perform program and environment commands "
+                "such as waiting, looping, "
+                "handling environment variables and so on\n"
+                "upgrade: Upgrades to latest version of Ariots Attack Agent - currently only "
+                "supported on linux machines")
 
 
 def CommandExists(userInput):
@@ -39,14 +42,14 @@ def PerformRequest(request):
         HelpRequested()
         return True
     if not CommandExists(command):
-        print(f"No such command '{command}'")
+        PrintAndLog(f"No such command '{command}'")
         return False
     try:
-        PrintBlue(f"Running Command:    {' '.join(request)}")
+        PrintBlueAndLog(f"Running Command:    {' '.join(request)}")
         CommandsSwitch[command](request[1:])
         return True
     except Exception as ex:
-        print(f"Failed to execute command {command}:\n")
-        PrintRed(ex)
+        PrintAndLog(f"Failed to execute command {command}:\n")
+        PrintRedAndLog(ex)
         return False
 

@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-from venv.AaSystem.Colors import PrintRed
 import time
-
+from venv.AaSystem.Log import PrintRedAndLog, PrintAndLog
 from venv.AttackAgent.BaseCommands.CommandQueue import EnqueueCommandsNext
 
 TimeConversionsFromSeconds = {
@@ -15,27 +14,27 @@ TimeConversionsFromSeconds = {
 class AaSystemCommands:
     def Wait(self, request):
         if not request or len(request) < 2:
-            PrintRed(f"Missing system command parameters")
+            PrintRedAndLog(f"Missing system command parameters")
             return
 
         requestedTimeType = request[0]
         waitTimeRequested = request[1]
 
         if requestedTimeType not in TimeConversionsFromSeconds.keys():
-            PrintRed(f"Requested wait type '{requestedTimeType}' not valid type")
+            PrintRedAndLog(f"Requested wait type '{requestedTimeType}' not valid type")
             return
 
         try:
             WaitTime = float(waitTimeRequested) * TimeConversionsFromSeconds[requestedTimeType]
         except ValueError:
-            PrintRed("The Wait time entered is not a valid number")
+            PrintRedAndLog("The Wait time entered is not a valid number")
             return
 
         time.sleep(WaitTime)
 
     def Loop(self, request):
         if not request or len(request) < 2:
-            PrintRed("Missing required parameters")
+            PrintRedAndLog("Missing required parameters")
             return
         iterations = request[0]
         command = request[1]
@@ -46,27 +45,27 @@ class AaSystemCommands:
                 commandsList.append(command)
             EnqueueCommandsNext(commandsList)
         except Exception as ex:
-            print(f"Failed to execute Loop on repetitions: {iterations}, command: {command}:\n")
-            PrintRed(ex)
+            PrintAndLog(f"Failed to execute Loop on repetitions: {iterations}, command: {command}:\n")
+            PrintRedAndLog(ex)
             return
 
 
 class AaSystemCommandsHelp:
     def Wait(self, request):
-        print("Sleeps for a requested amount of time\n"
-              "Command parameters: [WaitTimeType] [WaitTime]\n"
-              "'WaitTimeType' - The time format that for the WaitTime parameter, available options:\n"
-              "     -s: seconds\n"
-              "     -m: minutes\n"
-              "     -h: hours\n"
-              "     -d: days\n"
-              "'WaitTime: The amount of time that will be waited'")
+        PrintAndLog("Sleeps for a requested amount of time\n"
+                    "Command parameters: [WaitTimeType] [WaitTime]\n"
+                    "'WaitTimeType' - The time format that for the WaitTime parameter, available options:\n"
+                    "     -s: seconds\n"
+                    "     -m: minutes\n"
+                    "     -h: hours\n"
+                    "     -d: days\n"
+                    "'WaitTime: The amount of time that will be waited'")
 
     def Loop(self, request):
-        print("A for loop on the provided function\n"
-              "Command parameteres: [Repetitions] [Command]\n"
-              "'Repetitions' - An integer indicating the amount of times to perform the provided function\n"
-              "'Command' - an Attack Agent function surrounded by parentheses that will be repeated in the loop")
+        PrintAndLog("A for loop on the provided function\n"
+                    "Command parameteres: [Repetitions] [Command]\n"
+                    "'Repetitions' - An integer indicating the amount of times to perform the provided function\n"
+                    "'Command' - an Attack Agent function surrounded by parentheses that will be repeated in the loop")
 
 
 def AaSystemCommandsSwitch(helpRequested=False):
@@ -80,17 +79,17 @@ def AaSystemCommandsSwitch(helpRequested=False):
 
 
 def HelpRequested(availableCommands):
-    print("sc: Stands for System Commands. sc run system and program functions such as waiting, changing system "
-          "variables and more\n"
-          "The available system commands are:")
+    text = "sc: Stands for System Commands. sc run system and program functions such as waiting, changing system "\
+           "The available system commands are:\n"
     for command in availableCommands:
-        print(f"    {command}")
-    print("For more information on a command add -help after a command, i.e.: '-sc wait -help'")
+        text = f"{text}    {command}\n"
+    text = f"{text}For more information on a command add -help after a command, i.e.: '-sc wait -help'"
+    PrintAndLog(text)
 
 
 def RunAaSystemCommand(request):
     if not request:
-        PrintRed(f"No Attack Agent system command to execute passed in parameters")
+        PrintRedAndLog(f"No Attack Agent system command to execute passed in parameters")
         return
     command = str.lower(request[0])
     availableAaSystemCommands = AaSystemCommandsSwitch().keys()
@@ -98,7 +97,7 @@ def RunAaSystemCommand(request):
         HelpRequested(availableAaSystemCommands)
         return
     if command not in availableAaSystemCommands:
-        PrintRed(f"No such Attack Agent system command: '{command}'")
+        PrintRedAndLog(f"No such Attack Agent system command: '{command}'")
         return
     AaSystemCommandHelpRequested = "-help" in request
     AaSystemCommandsSwitch(AaSystemCommandHelpRequested)[command](request[1:])
