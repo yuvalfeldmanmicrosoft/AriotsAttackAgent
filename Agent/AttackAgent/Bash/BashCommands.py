@@ -75,6 +75,25 @@ class BashCommands:
         url = request[0]
         return RunSubProcess(f"sudo mkdir -p ~/AriotsTemp;sudo wget -O ~/AriotsTemp/{os.path.basename(url)} {url}")
 
+    def WhoAmI(self, request):
+        if request and request[0] == "-r":
+            return RunSubProcess("sudo whoami")
+        return RunSubProcess("whoami")
+
+    def Ping(self, request):
+        if not request:
+            PrintRedAndLog("Missing required parameters")
+        requestPing = request[0]
+        if requestPing == "google":
+            return RunSubProcess("ping -c 4 google.com")
+        if requestPing == "self":
+            return RunSubProcess("ping -c 4 127.0.0.1")
+        if requestPing == "8":
+            return RunSubProcess("ping -c 4 8.8.8.8")
+        if requestPing == "-c" and len(request) > 1:
+            return RunSubProcess(f"ping -c 4 {request[1]}")
+        PrintRedAndLog("Invalid or missing parameters")
+
 
 class BashCommandsHelp:
     def IpConfig(self, request):
@@ -167,6 +186,21 @@ class BashCommandsHelp:
         return PrintAndLog("Receives one parameter [URL] and performs a wget request from that url\n"
                            "Performs the bash command: 'wget ~/AriotsTemp/ [requestUrl]'")
 
+    def WhoAmI(self, request):
+        return PrintAndLog("Runs the self discovering command 'whoami'\n"
+                           "The parameter -r can be passed at the end to indicate to run as root (sudo)")
+
+    def Ping(self, request):
+        return PrintAndLog("pings a destination url'\n"
+                           "Receives one of the following parameters:\n"
+                           "        'google' - pings google.com\n"
+                           "        'self' - pings 127.0.0.1\n"
+                           "        '8' - pings 8.8.8.8\n"
+                           "        '-c' - in this case the request takes in an additional parameter [url] and "
+                           "pings that url - ping [url]\n"
+                           "The destination is pinged 4 times, the response will appear once all four pings have "
+                           "completed")
+
 
 def GetBashCommandsSwitch(helpRequested=False):
     commands = BashCommands() if not helpRequested else BashCommandsHelp()
@@ -191,7 +225,9 @@ def GetBashCommandsSwitch(helpRequested=False):
         'commonbots': commands.CommonBots,
         'clearhistoryfile': commands.ClearHistoryFile,
         'downloadvirusfile': commands.DownloadVirusFile,
-        'downloadfile': commands.DownloadFile
+        'downloadfile': commands.DownloadFile,
+        'whoami': commands.WhoAmI,
+        'ping': commands.Ping,
     }
 
     return switchOptions
