@@ -71,7 +71,7 @@ class BashCommands:
         if not request:
             PrintRedAndLog("Missing required parameter: download url")
         url = request[0]
-        return RunSubProcess(f"sudo mkdir -p ~/AriotsTemp;sudo wget ~/AriotsTemp/virus/ {url}")
+        return RunSubProcess(f"sudo mkdir -p ~/AriotsTemp/;sudo wget ~/AriotsTemp/virus/ {url}")
 
 
 class BashCommandsHelp:
