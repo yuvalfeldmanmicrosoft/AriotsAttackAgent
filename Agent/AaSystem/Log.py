@@ -2,6 +2,7 @@
 import datetime
 import os
 from Agent.AaSystem.Colors import *
+from Agent.AaSystem.SystemInspector import GetOperatingSystemName
 
 
 def GetLogFileName():
@@ -9,21 +10,30 @@ def GetLogFileName():
     return f"AttackAgentLog{now.day}{now.month}{now.year}"
 
 
+def GetLogsFolderPath():
+    if str.lower(GetOperatingSystemName()) == "linux":
+        return "~\\AriotsAttackAgent\\Logs"
+    return "\\Logs"
+
+
 def GetLogFilePath():
-    return f"Logs\\{GetLogFileName()}.txt"
+    return f".{GetLogsFolderPath()}\\{GetLogFileName()}.txt"
 
 
 def CreateLogFolderIfNone():
-    if not os.path.exists("Logs"):
-        os.makedirs("Logs")
+    return
+    # logsFolderPath = GetLogsFolderPath()
+    # if not os.path.exists(logsFolderPath):
+    #     os.makedirs(logsFolderPath)
 
 
 def WriteToLog(text):
-    CreateLogFolderIfNone()
-    f = open(GetLogFilePath(), "a+")
-    f.write(f"{datetime.datetime.now()}: ")
-    f.write(f"{text}\n")
-    f.close()
+    return
+    # CreateLogFolderIfNone()
+    # f = open(GetLogFilePath(), "a+")
+    # f.write(f"{datetime.datetime.now()}: ")
+    # f.write(f"{text}\n")
+    # f.close()
 
 
 def PrintColor(text, color):
