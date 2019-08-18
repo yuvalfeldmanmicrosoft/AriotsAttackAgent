@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-from venv.AaSystem.Log import PrintRedAndLog, WriteToLog
-from venv.AaSystem.SystemInspector import GetOperatingSystemName, GetEnvironmentVariableWindows, \
+from Agent.AaSystem.Log import PrintRedAndLog, WriteToLog
+from Agent.AaSystem import GetOperatingSystemName, GetEnvironmentVariableWindows, \
     GetEnvironmentVariableLinux
 
 

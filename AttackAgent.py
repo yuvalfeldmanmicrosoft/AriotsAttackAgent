@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 import sys
-from venv.AaSystem.Log import PrintRedAndLog, PrintAndLog, WriteToLog
-from venv.AttackAgent.BaseCommands.CommandExecutor import RunCommands
-from venv.AttackAgent.BaseCommands.CommandQueue import EnqueueCommand
-from venv.AaSystem.AriotsShield import RunningOnPermittedMachine
+from Agent.AaSystem.Log import PrintRedAndLog, PrintAndLog, WriteToLog
+from Agent.AttackAgent.BaseCommands import RunCommands
+from Agent.AttackAgent.BaseCommands import EnqueueCommand
+from Agent.AaSystem.AriotsShield import RunningOnPermittedMachine
 
 
 def WaitForInput():

@@ -1,8 +1,7 @@
 #!/usr/bin/python3
-from venv.AaSystem.Log import PrintAndLog, PrintBlueAndLog, PrintRedAndLog
-from venv.AttackAgent.BaseCommands.BaseCommands import *
-from venv.AttackAgent.BaseCommands.CommandQueue import CommandQueueNotEmpty, DeQueueCommand, EmptyCommandQueue
-from venv.AttackAgent.BaseCommands.RequestBuilder import ParseRequest
+from Agent.AaSystem.Log import PrintAndLog, PrintBlueAndLog, PrintRedAndLog
+from Agent.AttackAgent.BaseCommands import CommandQueueNotEmpty, DeQueueCommand, EmptyCommandQueue
+from Agent.AttackAgent.BaseCommands import ParseRequest
 
 
 def RunCommands():

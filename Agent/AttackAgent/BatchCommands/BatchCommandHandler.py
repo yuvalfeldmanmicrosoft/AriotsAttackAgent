@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import ntpath
-from venv.AaSystem.Log import PrintAndLog, PrintRedAndLog
-from venv.AttackAgent.BaseCommands.CommandQueue import EnqueueCommandsNext
+from Agent.AaSystem.Log import PrintAndLog, PrintRedAndLog
+from Agent.AttackAgent.BaseCommands import EnqueueCommandsNext
 from os import listdir
 from os.path import isfile, join
 

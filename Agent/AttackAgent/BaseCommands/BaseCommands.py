@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-from venv.AaSystem.AaUpgrade import UpgradeAaToLatestVersion
-from venv.AttackAgent.BatchCommands.BatchCommandHandler import AddCommandsBatch
-from venv.AttackAgent.Bash.BashCommands import RunBashCommand
-from venv.AttackAgent.AttackAgentSystemCommands.AaSystemCommands import RunAaSystemCommand
+from Agent.AaSystem.AaUpgrade import UpgradeAaToLatestVersion
+from Agent.AttackAgent.BatchCommands.BatchCommandHandler import AddCommandsBatch
+from Agent.AttackAgent.Bash.BashCommands import RunBashCommand
+from Agent.AttackAgent.AttackAgentSystemCommands import RunAaSystemCommand
 
 
 def AddBatchCommands(request):

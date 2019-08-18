@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-from venv.AaSystem.Log import PrintAndLog, PrintRedAndLog
-from venv.AaSystem.SystemInspector import GetOperatingSystemName
-from venv.AttackAgent.Bash.BashCommandExecutor import RunSubProcess
+from Agent.AaSystem.Log import PrintAndLog, PrintRedAndLog
+from Agent.AaSystem import GetOperatingSystemName
+from Agent.AttackAgent.Bash.BashCommandExecutor import RunSubProcess
 
 
 class BashCommands:
@@ -63,6 +63,9 @@ class BashCommands:
 
     def ClearHistoryFile(self):
         return RunSubProcess("history -c")
+
+    def DownloadVirusFile(self):
+        return RunSubProcess("wget /home https://raw.githubusercontent.com/YuvalFeldman/AttackAgentGetFile/master/virus.txt")
 
 
 class BashCommandsHelp:
@@ -142,6 +145,11 @@ class BashCommandsHelp:
         return PrintAndLog("Performs the bash command: 'history -c'\n"
                            "Triggers alert: 'ClearHistoryFile'")
 
+    def DownloadVirusFile(self):
+        return PrintAndLog("Performs the bash command: 'wget /home "
+                           "https://raw.githubusercontent.com/YuvalFeldman/AttackAgentGetFile/master/virus.txt'\n"
+                           "Downloads a 'suspicious file from the internet")
+
 
 def GetBashCommandsSwitch(helpRequested=False):
     commands = BashCommands() if not helpRequested else BashCommandsHelp()
@@ -164,7 +172,8 @@ def GetBashCommandsSwitch(helpRequested=False):
         'disableauditdlogg': commands.DisableAuditdLogging,
         'cryptominer': commands.CryptoMiner,
         'commonbots': commands.CommonBots,
-        'clearhistoryfile': commands.ClearHistoryFile
+        'clearhistoryfile': commands.ClearHistoryFile,
+        'downloadvirusfile': commands.DownloadVirusFile
     }
 
     return switchOptions
