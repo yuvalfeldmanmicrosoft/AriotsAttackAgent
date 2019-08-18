@@ -2,6 +2,7 @@
 import datetime
 import os
 from Agent.AaSystem.Colors import *
+from Agent.AaSystem.SystemInspector import GetOperatingSystemName
 
 
 def GetLogFileName():
@@ -10,7 +11,9 @@ def GetLogFileName():
 
 
 def GetLogsFolderPath():
-    return ".\\Logs"
+    if str.lower(GetOperatingSystemName()) == "linux":
+        return "~\\AriotsAttackAgent\\Logs"
+    return "\\Logs"
 
 
 def GetLogFilePath():
