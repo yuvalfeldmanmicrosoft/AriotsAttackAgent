@@ -9,13 +9,18 @@ def GetLogFileName():
     return f"AttackAgentLog{now.day}{now.month}{now.year}"
 
 
+def GetLogsFolderPath():
+    return ".\\Logs"
+
+
 def GetLogFilePath():
-    return f".\\Logs\\{GetLogFileName()}.txt"
+    return f".{GetLogsFolderPath()}\\{GetLogFileName()}.txt"
 
 
 def CreateLogFolderIfNone():
-    if not os.path.exists("Logs"):
-        os.makedirs("Logs")
+    logsFolderPath = GetLogsFolderPath()
+    if not os.path.exists(logsFolderPath):
+        os.makedirs(logsFolderPath)
 
 
 def WriteToLog(text):
