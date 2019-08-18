@@ -2,6 +2,7 @@
 from Agent.AaSystem.Log import PrintAndLog, PrintRedAndLog
 from Agent.AaSystem.SystemInspector import GetOperatingSystemName
 from Agent.AttackAgent.Bash.BashCommandExecutor import RunSubProcess
+import os
 
 
 class BashCommands:
@@ -65,13 +66,14 @@ class BashCommands:
         return RunSubProcess("history -c")
 
     def DownloadVirusFile(self, request):
-        return RunSubProcess("sudo mkdir -p ~/AriotsTemp/virus;sudo wget -O ~/AriotsTemp/virus/virus.txt https://raw.githubusercontent.com/YuvalFeldman/AttackAgentGetFile/master/virus.txt")
+        return RunSubProcess("sudo mkdir -p ~/AriotsTemp/virus;sudo wget -O ~/AriotsTemp/virus/virus.txt "
+                             "https://raw.githubusercontent.com/YuvalFeldman/AttackAgentGetFile/master/virus.txt")
 
     def DownloadFile(self, request):
         if not request:
             PrintRedAndLog("Missing required parameter: download url")
         url = request[0]
-        return RunSubProcess(f"sudo mkdir -p ~/AriotsTemp;sudo wget ~/AriotsTemp/ '{url}'")
+        return RunSubProcess(f"sudo mkdir -p ~/AriotsTemp;sudo wget -O ~/AriotsTemp/{os.path.basename(url)} {url}")
 
 
 class BashCommandsHelp:
