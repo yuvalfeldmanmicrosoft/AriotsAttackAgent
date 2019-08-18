@@ -21,17 +21,19 @@ def GetLogFilePath():
 
 
 def CreateLogFolderIfNone():
-    logsFolderPath = GetLogsFolderPath()
-    if not os.path.exists(logsFolderPath):
-        os.makedirs(logsFolderPath)
+    return
+    # logsFolderPath = GetLogsFolderPath()
+    # if not os.path.exists(logsFolderPath):
+    #     os.makedirs(logsFolderPath)
 
 
 def WriteToLog(text):
-    CreateLogFolderIfNone()
-    f = open(GetLogFilePath(), "a+")
-    f.write(f"{datetime.datetime.now()}: ")
-    f.write(f"{text}\n")
-    f.close()
+    return
+    # CreateLogFolderIfNone()
+    # f = open(GetLogFilePath(), "a+")
+    # f.write(f"{datetime.datetime.now()}: ")
+    # f.write(f"{text}\n")
+    # f.close()
 
 
 def PrintColor(text, color):
