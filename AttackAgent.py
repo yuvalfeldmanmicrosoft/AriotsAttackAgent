@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 import sys
 from Agent.AaSystem.Log import PrintRedAndLog, PrintAndLog, WriteToLog
-from Agent.AttackAgent.BaseCommands import RunCommands
-from Agent.AttackAgent.BaseCommands import EnqueueCommand
 from Agent.AaSystem.AriotsShield import RunningOnPermittedMachine
+from Agent.AttackAgent.BaseCommands.CommandExecutor import RunCommands
+from Agent.AttackAgent.BaseCommands.CommandQueue import EnqueueCommand
 
 
 def WaitForInput():

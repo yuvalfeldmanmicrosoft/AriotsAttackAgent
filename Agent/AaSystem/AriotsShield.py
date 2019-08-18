@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 from Agent.AaSystem.Log import PrintRedAndLog, WriteToLog
-from Agent.AaSystem import GetOperatingSystemName, GetEnvironmentVariableWindows, \
-    GetEnvironmentVariableLinux
-
+from Agent.AaSystem.SystemInspector import GetEnvironmentVariableWindows, GetEnvironmentVariableLinux, \
+    GetOperatingSystemName
 
 SupportedOsTypes = ["windows", "linux"]
 

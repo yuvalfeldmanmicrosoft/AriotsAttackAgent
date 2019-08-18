@@ -1,6 +1,6 @@
+from Agent.AaSystem.SystemInspector import GetOperatingSystemName
 from Agent.AttackAgent.Bash.BashCommandExecutor import RunSubProcess
 from Agent.AaSystem.Log import PrintRedAndLog, PrintAndLog
-from Agent.AaSystem import GetOperatingSystemName
 
 
 def UpgradeAaToLatestVersion(request):

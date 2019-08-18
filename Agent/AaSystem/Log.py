@@ -1,8 +1,7 @@
 #!/usr/bin/python3
-from Agent.AaSystem import CommandLineColors
 import datetime
 import os
-
+from Agent.AaSystem.Colors import CommandLineColors
 
 def GetLogFileName():
     now = datetime.datetime.now()
