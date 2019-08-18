@@ -85,13 +85,13 @@ class BashCommands:
             PrintRedAndLog("Missing required parameters")
         requestPing = request[0]
         if requestPing == "google":
-            return RunSubProcess("ping google.com")
+            return RunSubProcess("ping -c 4 google.com")
         if requestPing == "self":
-            return RunSubProcess("ping 127.0.0.1")
+            return RunSubProcess("ping -c 4 127.0.0.1")
         if requestPing == "8":
-            return RunSubProcess("ping 8.8.8.8")
+            return RunSubProcess("ping -c 4 8.8.8.8")
         if requestPing == "-c" and len(request) > 1:
-            return RunSubProcess(f"ping {request[1]}")
+            return RunSubProcess(f"ping -c 4 {request[1]}")
         PrintRedAndLog("Invalid or missing parameters")
 
 
