@@ -197,7 +197,9 @@ class BashCommandsHelp:
                            "        'self' - pings 127.0.0.1\n"
                            "        '8' - pings 8.8.8.8\n"
                            "        '-c' - in this case the request takes in an additional parameter [url] and "
-                           "pings that url - ping [url]")
+                           "pings that url - ping [url]\n"
+                           "The destination is pinged 4 times, the response will appear once all four pings have "
+                           "completed")
 
 
 def GetBashCommandsSwitch(helpRequested=False):
