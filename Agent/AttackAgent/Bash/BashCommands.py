@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 from Agent.AaSystem.Log import PrintAndLog, PrintRedAndLog
-from Agent.AaSystem import GetOperatingSystemName
+from Agent.AaSystem.SystemInspector import GetOperatingSystemName
 from Agent.AttackAgent.Bash.BashCommandExecutor import RunSubProcess
 
 

@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 from Agent.AaSystem.AaUpgrade import UpgradeAaToLatestVersion
+from Agent.AttackAgent.AttackAgentSystemCommands.AaSystemCommands import RunAaSystemCommand
 from Agent.AttackAgent.BatchCommands.BatchCommandHandler import AddCommandsBatch
 from Agent.AttackAgent.Bash.BashCommands import RunBashCommand
-from Agent.AttackAgent.AttackAgentSystemCommands import RunAaSystemCommand
 
 
 def AddBatchCommands(request):

@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="18d4f685-5b87-4468-8335-a73e544c5d36" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/AttackAgent/Bash/BashCommands.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/AttackAgent/Bash/BashCommands.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/AttackAgent/AttackAgentSystemCommands/AaSystemCommands.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/AttackAgent/AttackAgentSystemCommands/AaSystemCommands.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/AttackAgent/BaseCommands/BaseCommands.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/AttackAgent/BaseCommands/BaseCommands.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/AttackAgent/BaseCommands/CommandExecutor.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/AttackAgent/BaseCommands/CommandExecutor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/AttackAgent/Bash/BashCommands.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/AttackAgent/Bash/BashCommands.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/AttackAgent/BatchCommands/BatchCommandHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/AttackAgent/BatchCommands/BatchCommandHandler.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,11 +35,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Project\AttackAgent\Agent" />
       <recent name="C:\Project\AttackAgent\venv\AaSystem" />
       <recent name="C:\Project\AttackAgent\venv\AttackAgent\BatchCommands\Scrypts" />
       <recent name="C:\Project\AttackAgent\venv\AttackAgent" />
       <recent name="C:\Project\AttackAgent\venv\AttackAgent\BatchCommands" />
-      <recent name="C:\Project\AttackAgent\venv\BaseCommandHandling" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -194,6 +198,13 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Agent/AttackAgent/Bash/BashCommands.py</url>
+          <line>1</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">

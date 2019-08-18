@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 from Agent.AaSystem.Log import PrintAndLog, PrintBlueAndLog, PrintRedAndLog
-from Agent.AttackAgent.BaseCommands import CommandQueueNotEmpty, DeQueueCommand, EmptyCommandQueue
-from Agent.AttackAgent.BaseCommands import ParseRequest
+from Agent.AttackAgent.BaseCommands.BaseCommands import CommandsSwitch
+from Agent.AttackAgent.BaseCommands.CommandQueue import EmptyCommandQueue, DeQueueCommand, CommandQueueNotEmpty
+from Agent.AttackAgent.BaseCommands.RequestBuilder import ParseRequest
 
 
 def RunCommands():
