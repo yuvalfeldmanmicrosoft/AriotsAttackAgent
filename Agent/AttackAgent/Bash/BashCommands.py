@@ -76,9 +76,23 @@ class BashCommands:
         return RunSubProcess(f"sudo mkdir -p ~/AriotsTemp;sudo wget -O ~/AriotsTemp/{os.path.basename(url)} {url}")
 
     def WhoAmI(self, request):
-        if request and request[0] == "=r":
-            return RunSubProcess(f"sudo whoami")
-        return RunSubProcess(f"whoami")
+        if request and request[0] == "-r":
+            return RunSubProcess("sudo whoami")
+        return RunSubProcess("whoami")
+
+    def Ping(self, request):
+        if not request:
+            PrintRedAndLog("Missing required parameters")
+        requestPing = request[0]
+        if requestPing == "google":
+            return RunSubProcess("ping google.com")
+        if requestPing == "self":
+            return RunSubProcess("ping 127.0.0.1")
+        if requestPing == "8":
+            return RunSubProcess("ping 8.8.8.8")
+        if requestPing == "-c" and len(request) > 1:
+            return RunSubProcess(f"ping {request[1]}")
+        PrintRedAndLog("Invalid or missing parameters")
 
 
 class BashCommandsHelp:
@@ -176,6 +190,15 @@ class BashCommandsHelp:
         return PrintAndLog("Runs the self discovering command 'whoami'\n"
                            "The parameter -r can be passed at the end to indicate to run as root (sudo)")
 
+    def Ping(self, request):
+        return PrintAndLog("pings a destination url'\n"
+                           "Receives one of the following parameters:\n"
+                           "        'google' - pings google.com\n"
+                           "        'self' - pings 127.0.0.1\n"
+                           "        '8' - pings 8.8.8.8\n"
+                           "        '-c' - in this case the request takes in an additional parameter [url] and "
+                           "pings that url - ping [url]")
+
 
 def GetBashCommandsSwitch(helpRequested=False):
     commands = BashCommands() if not helpRequested else BashCommandsHelp()
@@ -202,6 +225,7 @@ def GetBashCommandsSwitch(helpRequested=False):
         'downloadvirusfile': commands.DownloadVirusFile,
         'downloadfile': commands.DownloadFile,
         'whoami': commands.WhoAmI,
+        'ping': commands.Ping,
     }
 
     return switchOptions
