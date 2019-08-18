@@ -10,7 +10,7 @@ def GetLogFileName():
 
 
 def GetLogFilePath():
-    return f"Logs\\{GetLogFileName()}.txt"
+    return f".\\Logs\\{GetLogFileName()}.txt"
 
 
 def CreateLogFolderIfNone():
