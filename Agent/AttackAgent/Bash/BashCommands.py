@@ -94,6 +94,16 @@ class BashCommands:
             return RunSubProcess(f"ping -c 4 {request[1]}")
         PrintRedAndLog("Invalid or missing parameters")
 
+    def AddUser(self, request):
+        if not request or len(request) < 2:
+            PrintRedAndLog("Missing required parameters")
+            return
+        userType = request[0]
+        if userType == "-r":
+            return RunSubProcess(f"useradd {request[0]}")
+        if userType == "-a":
+            return RunSubProcess(f"useradd {request[0]} sudo")
+
 
 class BashCommandsHelp:
     def IpConfig(self, request):
@@ -178,11 +188,6 @@ class BashCommandsHelp:
                            "Downloads a 'suspicious file from the internet")
 
     def DownloadFile(self, request):
-        return PrintAndLog("Performs the bash command: 'wget ~/AriotsTemp/virus/virus.txt "
-                           "https://raw.githubusercontent.com/YuvalFeldman/AttackAgentGetFile/master/virus.txt'\n"
-                           "Downloads a 'suspicious file from the internet")
-
-    def DownloadFile(self, request):
         return PrintAndLog("Receives one parameter [URL] and performs a wget request from that url\n"
                            "Performs the bash command: 'wget ~/AriotsTemp/ [requestUrl]'")
 
@@ -200,6 +205,14 @@ class BashCommandsHelp:
                            "pings that url - ping [url]\n"
                            "The destination is pinged 4 times, the response will appear once all four pings have "
                            "completed")
+
+    def AddUser(self, request):
+        return PrintAndLog("Adds a user to the operating system.\n"
+                           "useradd [Type] [Username]\n"
+                           "        'Type' - indicated the type of user that will be created, currently supporting:\n"
+                           "                '-r' - regular user\n"
+                           "                '-a' - admin user\n"
+                           "        'Username' - a string that is the username that will be created")
 
 
 def GetBashCommandsSwitch(helpRequested=False):
@@ -228,6 +241,7 @@ def GetBashCommandsSwitch(helpRequested=False):
         'downloadfile': commands.DownloadFile,
         'whoami': commands.WhoAmI,
         'ping': commands.Ping,
+        'adduser': commands.AddUser,
     }
 
     return switchOptions
