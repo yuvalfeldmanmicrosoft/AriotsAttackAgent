@@ -103,6 +103,15 @@ class BashCommands:
             return RunSubProcess(f"useradd {request[0]}")
         if userType == "-a":
             return RunSubProcess(f"useradd {request[0]} sudo")
+        PrintRedAndLog("Invalid parameter passed")
+        return
+
+    def ChangeUserPassword(self, request):
+        if not request or len(request) < 2:
+            PrintRedAndLog("Missing required parameters")
+        newPassword = request[0]
+        user = request[1]
+        return RunSubProcess(f"sudo {newPassword} {user}")
 
 
 class BashCommandsHelp:
@@ -214,6 +223,13 @@ class BashCommandsHelp:
                            "                '-a' - admin user\n"
                            "        'Username' - a string that is the username that will be created")
 
+    def ChangeUserPassword(self, request):
+        return PrintAndLog("Changes the password for a user\n"
+                           "changeuserpassword [NewPassword] [User]\n"
+                           "        'NewPassword' - the new password that will be set for user\n"
+                           "        'User' - the username of the user")
+
+
 
 def GetBashCommandsSwitch(helpRequested=False):
     commands = BashCommands() if not helpRequested else BashCommandsHelp()
@@ -242,6 +258,7 @@ def GetBashCommandsSwitch(helpRequested=False):
         'whoami': commands.WhoAmI,
         'ping': commands.Ping,
         'adduser': commands.AddUser,
+        'changeuserpassword': commands.ChangeUserPassword,
     }
 
     return switchOptions
