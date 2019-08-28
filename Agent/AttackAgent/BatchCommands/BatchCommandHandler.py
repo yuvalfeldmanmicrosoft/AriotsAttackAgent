@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 import ntpath
-from Agent.AaSystem.Log import PrintAndLog, PrintRedAndLog
+from AaSystem.LogAndPrint.Log import PrintAndLog, PrintRedAndLog
 from os import listdir
 from os.path import isfile, join
-from Agent.AttackAgent.BaseCommands.CommandQueue import EnqueueCommandsNext
+from AaSystem.EventQueue.CommandQueue import EnqueueCommandsNext
 
 SupportedRequestTypes = ["-help", "-f", "-p"]
 PreMadeBatchCommandsPath = "venv\\AttackAgent\\BatchCommands\\Scripts\\"

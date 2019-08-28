@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import time
-from Agent.AaSystem.Log import PrintRedAndLog, PrintAndLog
-from Agent.AttackAgent.BaseCommands.CommandQueue import EnqueueCommandsNext
+from AaSystem.LogAndPrint.Log import PrintRedAndLog, PrintAndLog
+from AaSystem.EventQueue.CommandQueue import EnqueueCommandsNext
 
 TimeConversionsFromSeconds = {
     "-s": 1,

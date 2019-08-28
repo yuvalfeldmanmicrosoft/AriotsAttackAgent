@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 import datetime
-import os
-from Agent.AaSystem.Colors import *
-from Agent.AaSystem.SystemInspector import GetOperatingSystemName
+from AaSystem.LogAndPrint.Colors import *
+from AaSystem.OperatingSystem.SystemInspector import GetOperatingSystemName
 
 
 def GetLogFileName():
