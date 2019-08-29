@@ -2,39 +2,47 @@
 import queue
 
 
-commandQueue = queue.Queue()
-tempQueue = queue.Queue()
+commandQueue = "commandQueue"
+tempQueue = "tempQueue"
 
 
-def CommandQueueNotEmpty():
-    return not commandQueue.empty()
+CommandQueues = {
+    "main": {
+        commandQueue: queue.Queue(),
+        tempQueue: queue.Queue()
+    }
+}
 
 
-def EnqueueCommand(command):
-    commandQueue.put(command)
+def CommandQueueNotEmpty(queueName="main"):
+    return not CommandQueues[queueName][commandQueue].empty()
 
 
-def EnqueueCommands(commands):
+def EnqueueCommand(command, queueName="main"):
+    CommandQueues[queueName][commandQueue].put(command)
+
+
+def EnqueueCommands(commands, queueName="main"):
     for command in commands:
-        commandQueue.put(command)
+        CommandQueues[queueName][commandQueue].put(command)
 
 
-def EnqueueCommandsNext(commands):
-    while not commandQueue.empty():
-        tempQueue.put(commandQueue.get())
+def EnqueueCommandsNext(commands, queueName="main"):
+    while not CommandQueues[queueName][commandQueue].empty():
+        CommandQueues[queueName][tempQueue].put(CommandQueues[queueName][commandQueue].get())
     for command in commands:
-        commandQueue.put(command)
-    while not tempQueue.empty():
-        commandQueue.put(tempQueue.get())
+        CommandQueues[queueName][commandQueue].put(command)
+    while not CommandQueues[queueName][tempQueue].empty():
+        CommandQueues[queueName][commandQueue].put(CommandQueues[queueName][tempQueue].get())
 
 
-def DeQueueCommand():
+def DeQueueCommand(queueName="main"):
     if CommandQueueNotEmpty():
-        return commandQueue.get()
+        return CommandQueues[queueName][commandQueue].get()
     else:
         return None
 
 
-def EmptyCommandQueue():
-    while not commandQueue.empty():
-        commandQueue.get()
+def EmptyCommandQueue(queueName="main"):
+    while not CommandQueues[queueName][commandQueue].empty():
+        CommandQueues[queueName][commandQueue].get()
