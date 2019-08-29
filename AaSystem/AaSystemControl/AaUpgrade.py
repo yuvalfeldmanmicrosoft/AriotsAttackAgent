@@ -1,10 +1,13 @@
 #!/usr/bin/python3
 from AaSystem.LogAndPrint.Log import PrintRedAndLog, PrintAndLog
 from AaSystem.OperatingSystem.SystemInspector import GetOperatingSystemName
-from Agent.AttackAgent.Bash.BashCommandExecutor import RunSubProcess
+from Agent.AttackAgent.BashCommands.BashCommandExecutor import RunSubProcess
 
 
 def UpgradeAaToLatestVersion(request):
+    if "-help" in request:
+        HelpRequested()
+        return
     try:
         if str.lower(GetOperatingSystemName()) != "linux":
             PrintRedAndLog("Failed to upgrade AttackAgent. Upgrade currently supported only in Linux")
@@ -15,3 +18,12 @@ def UpgradeAaToLatestVersion(request):
               f"required permissions and the Attack Agent is not running in another process.")
         PrintRedAndLog(ex)
 
+
+def HelpRequested():
+    PrintAndLog("\n"
+                "       Upgrade downloads and installs the latest stable version of Attack Agent, ensures Attack Agent"
+                " Permissions are set and the $PATH variable is updated.\n"
+                "       Currently Attack Agent Upgrade is only supported on Linux machines.")
+
+
+UpgradeAaToLatestVersion.PublicFacing = "upgrade"

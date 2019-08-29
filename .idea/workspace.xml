@@ -2,26 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="18d4f685-5b87-4468-8335-a73e544c5d36" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/AaSystem/RequestManagment/RequestProcessor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/AaSystem/AaUpgrade.py" beforeDir="false" afterPath="$PROJECT_DIR$/AaSystem/AaSystemControl/AaUpgrade.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/AaSystem/AriotsShield.py" beforeDir="false" afterPath="$PROJECT_DIR$/AaSystem/OperatingSystem/AriotsShield.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/AaSystem/Colors.py" beforeDir="false" afterPath="$PROJECT_DIR$/AaSystem/LogAndPrint/Colors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/AaSystem/Log.py" beforeDir="false" afterPath="$PROJECT_DIR$/AaSystem/LogAndPrint/Log.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/AaSystem/SystemInspector.py" beforeDir="false" afterPath="$PROJECT_DIR$/AaSystem/OperatingSystem/SystemInspector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/AaSystem/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/AaSystem/RequestManagment/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/AttackAgent/AttackAgentSystemCommands/AaSystemCommands.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/AttackAgent/SystemCommands/AaSystemCommands.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/AttackAgent/AttackAgentSystemCommands/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/AttackAgent/BashCommands/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/AttackAgent/BaseCommands/BaseCommands.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/AttackAgent/BaseCommands/CommandExecutor.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/AttackAgent/BaseCommands/CommandQueue.py" beforeDir="false" afterPath="$PROJECT_DIR$/AaSystem/EventQueue/CommandQueue.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/AttackAgent/BaseCommands/RequestBuilder.py" beforeDir="false" afterPath="$PROJECT_DIR$/AaSystem/RequestManagment/RequestBuilder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/AttackAgent/BaseCommands/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/AttackAgent/SystemCommands/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/AttackAgent/Bash/BashCommandExecutor.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/AttackAgent/BashCommands/BashCommandExecutor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/AttackAgent/Bash/BashCommands.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/AttackAgent/BashCommands/BashCommands.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/AttackAgent/Bash/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/AttackAgent/BatchCommands/BatchCommandHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/AttackAgent/BatchCommands/BatchCommandHandler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AttackAgent.py" beforeDir="false" afterPath="$PROJECT_DIR$/AttackAgent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AaSystem/AaSystemControl/AaUpgrade.py" beforeDir="false" afterPath="$PROJECT_DIR$/AaSystem/AaSystemControl/AaUpgrade.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AaSystem/RequestManagment/CommandFileReferences.py" beforeDir="false" afterPath="$PROJECT_DIR$/AaSystem/RequestManagment/CommandFileReferences.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AaSystem/RequestManagment/RequestProcessor.py" beforeDir="false" afterPath="$PROJECT_DIR$/AaSystem/RequestManagment/RequestProcessor.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -212,12 +196,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/AaSystem/AaSystemControl/AaUpgrade.py</url>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
