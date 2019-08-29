@@ -6,13 +6,14 @@ from AaSystem.LogAndPrint.Log import PrintRedAndLog
 Processes = {}
 
 
-def RunProcess(processName, func):
-    if processName in Processes:
-        PrintRedAndLog(f"Process {processName} is an active process. Cannot run multiple processes by the same name.")
-        return
-    newProcess = multiprocessing.Process(target=func)
-    Processes[processName] = newProcess
-    newProcess.start()
+def RunProcess(request):
+    print("running!")
+    # if processName in Processes:
+    #     PrintRedAndLog(f"Process {processName} is an active process. Cannot run multiple processes by the same name.")
+    #     return
+    # newProcess = multiprocessing.Process(target=func)
+    # Processes[processName] = newProcess
+    # newProcess.start()
 
 
 def StopProcess(request):
@@ -21,18 +22,23 @@ def StopProcess(request):
     #     Processes[processName].terminate()
 
 
-def GetProcess(processName):
-    if processName in Processes:
-        return Processes[processName]
+def GetProcess(request):
+    print("getting!")
+    # if processName in Processes:
+    #     return Processes[processName]
 
 
-def WaitForProcess(processName):
-    try:
-        if processName in Processes:
-            Processes[processName].join()
-    except Exception as ex:
-        print(f"Failed waiting for process, exception encountered:\n")
-        PrintRedAndLog(ex)
+def WaitForProcess(request):
+    print("waiting!")
+    # try:
+    #     if processName in Processes:
+    #         Processes[processName].join()
+    # except Exception as ex:
+    #     print(f"Failed waiting for process, exception encountered:\n")
+    #     PrintRedAndLog(ex)
 
 
-StopProcess.PublicFacing = "stop"
+RunProcess.PublicFacing = "runProcess"
+StopProcess.PublicFacing = "stopProcess"
+GetProcess.PublicFacing = "getProcess"
+WaitForProcess.PublicFacing = "waitProcess"
