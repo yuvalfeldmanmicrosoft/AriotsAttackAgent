@@ -6,7 +6,7 @@ from os.path import isfile, join
 from AaSystem.EventQueue.CommandQueue import EnqueueCommandsNext
 
 SupportedRequestTypes = ["-help", "-f", "-p"]
-PreMadeBatchCommandsPath = "venv\\AttackAgent\\BatchCommands\\Scripts\\"
+PreMadeBatchCommandsPath = "Agent\\AttackAgent\\BatchCommands\Scripts\\"
 
 
 def GetAllPreMadeBatchNames():
@@ -14,38 +14,43 @@ def GetAllPreMadeBatchNames():
 
 
 def HelpRequested():
-    text = "Command parameters: run [-f] [filePath]\n"\
-           "                    run [-p] [CommandsBatchName]\n"\
-           "run: References text files containing a row delimited list of commands to run, places "\
-           "these commands at the front of the queue\n"\
-           "     '-f' - Indicates you will pass a file path to the batch command file, this will be"\
-           " followed by the filePath parameter\n"\
-           "     '-p' - Indicating you wish to use one of the pre made batch command scripts, will be "\
-           "followed by the CommandsBatchName parameter\n"\
-           "     'filePath' - the full path to the batch command file - The batch file referenced must "\
-           "contain only commands as provided when normally calling the attack agent\n"\
-           "     'CommandsBatchName' - The name of the pre made batch commands script, the available "\
-           "batch commands are:\n"
+    text = "\n" \
+           "        Run references text files containing a row delimited list of commands to run," \
+           " places these commands at the front of the queue\n"\
+           "        Command format:\n" \
+           "                     run [-f] [filePath]\n" \
+           "                     run [-p] [CommandsBatchName]\n\n" \
+           "       Command parameters:\n" \
+           "                     '-f' - Indicates you will pass a file path to the batch command file, this will be" \
+           " followed by the filePath parameter\n" \
+           "                     '-p' - Indicating you wish to use one of the pre made batch command scripts, will be " \
+           "followed by the CommandsBatchName parameter\n" \
+           "                     'filePath' - the full path to the batch command file - The batch file referenced " \
+           "must contain only commands as provided when normally calling the attack agent\n" \
+           "                     'CommandsBatchName' - The name of the pre made batch commands script\n\n" \
+           "       The available scenarios are:\n"
     for commandName in GetAllPreMadeBatchNames():
-        text = f"{text}            {commandName}\n"
-    text = f"{text}Each command must be separated by a new line\n"\
-           "It is possible to recursively add additional batch -run calls using a batch file\n"\
-           "Lines in Command Batch Files can be commented out by adding # to the start of the line"
+        text = f"{text}" \
+               f"                     {commandName}\n"
+    text = f"{text}\n" \
+           "        Each command must be separated by a new line\n" \
+           "        It is possible to recursively add additional batch -run calls using a batch file\n" \
+           "        Lines in Command Batch Files can be commented out by adding # to the start of the line\n"
     PrintAndLog(text)
 
 
-def AddCommandsBatch(request):
+def RunSenario(request):
     if not request:
-        PrintRedAndLog("Missing parameters in request")
+        PrintRedAndLog("Missing required parameters")
         return
 
     requestType = request[0]
 
     if requestType not in SupportedRequestTypes:
-        PrintRedAndLog(f"No such batch command type: '{requestType}'")
+        PrintRedAndLog(f"No such scenario command type: '{requestType}'")
         return
 
-    if requestType == "-help":
+    if "-help" in request:
         HelpRequested()
         return
 
@@ -70,3 +75,5 @@ def AddCommandsBatch(request):
         print(f"Failed to load command batch file, exception encountered:\n")
         PrintRedAndLog(ex)
 
+
+RunSenario.PublicFacing = "run"

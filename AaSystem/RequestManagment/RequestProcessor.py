@@ -18,7 +18,7 @@ def CreateCommandConnections():
             commands = GetPublicFacingFunctionsFromPath(commandPath)
             for command in commands:
                 CommandMapping[str.lower(command[1].PublicFacing)] = command[1]
-                CommandMappingNameByTree[commandType].append(command[0])
+                CommandMappingNameByTree[commandType].append(command[1].PublicFacing)
 
 
 def RunCommand(request):
@@ -45,7 +45,7 @@ def RunCommands():
     while CommandQueueNotEmpty():
         request = DeQueueCommand()
         success = RunCommand(request)
-        if not success:
+        if success is not None and not success:
             EmptyCommandQueue()
             return
 

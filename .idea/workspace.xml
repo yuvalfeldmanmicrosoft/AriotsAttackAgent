@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="18d4f685-5b87-4468-8335-a73e544c5d36" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/AttackAgent/BashCommands/BashCommands.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/AttackAgent/BashCommands/BashCommands.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AaSystem/RequestManagment/RequestProcessor.py" beforeDir="false" afterPath="$PROJECT_DIR$/AaSystem/RequestManagment/RequestProcessor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/AttackAgent/BatchCommands/BatchCommandHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/AttackAgent/BatchCommands/BatchCommandHandler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/AttackAgent/SystemCommands/AaSystemCommands.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/AttackAgent/SystemCommands/AaSystemCommands.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
