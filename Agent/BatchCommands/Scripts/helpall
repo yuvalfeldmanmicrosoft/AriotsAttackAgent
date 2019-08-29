@@ -1,0 +1,4 @@
+loop 2 loop 2 getip -help
+# comment
+wait -s 2
+getip

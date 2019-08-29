@@ -5,8 +5,9 @@ from os import listdir
 from os.path import isfile, join
 from AaSystem.EventQueue.CommandQueue import EnqueueCommandsNext
 
+
 SupportedRequestTypes = ["-help", "-f", "-p"]
-PreMadeBatchCommandsPath = "Agent\\AttackAgent\\BatchCommands\Scripts\\"
+PreMadeBatchCommandsPath = "Agent\\BatchCommands\Scripts\\"
 
 
 def GetAllPreMadeBatchNames():
@@ -39,7 +40,7 @@ def HelpRequested():
     PrintAndLog(text)
 
 
-def RunSenario(request):
+def RunScenario(request):
     if not request:
         PrintRedAndLog("Missing required parameters")
         return
@@ -76,4 +77,4 @@ def RunSenario(request):
         PrintRedAndLog(ex)
 
 
-RunSenario.PublicFacing = "run"
+RunScenario.PublicFacing = "run"

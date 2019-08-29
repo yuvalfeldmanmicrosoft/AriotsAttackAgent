@@ -3,6 +3,7 @@ import time
 from AaSystem.LogAndPrint.Log import PrintRedAndLog, PrintAndLog
 from AaSystem.EventQueue.CommandQueue import EnqueueCommandsNext
 
+
 TimeConversionsFromSeconds = {
     "-s": 1,
     "-m": 60,

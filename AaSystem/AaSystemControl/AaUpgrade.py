@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 from AaSystem.LogAndPrint.Log import PrintRedAndLog, PrintAndLog
 from AaSystem.OperatingSystem.SystemInspector import GetOperatingSystemName
-from Agent.AttackAgent.BashCommands.BashCommandExecutor import RunSubProcess
+from Agent.BashCommands.BashCommandExecutor import RunSubProcess
 
 
 def UpgradeAaToLatestVersion(request):

@@ -2,7 +2,7 @@
 import os
 from AaSystem.LogAndPrint.Log import PrintAndLog, PrintRedAndLog
 from AaSystem.OperatingSystem.SystemInspector import GetOperatingSystemName
-from Agent.AttackAgent.BashCommands.BashCommandExecutor import RunSubProcess
+from Agent.BashCommands.BashCommandExecutor import RunSubProcess
 
 
 def PerformCustomCommand(request):
