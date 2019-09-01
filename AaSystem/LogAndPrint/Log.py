@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import datetime
-from AaSystem.LogAndPrint.Colors import *
+from AaSystem.LogAndPrint.Colors import CommandLineColors
 from AaSystem.OperatingSystem.SystemInspector import GetOperatingSystemName
 
 
