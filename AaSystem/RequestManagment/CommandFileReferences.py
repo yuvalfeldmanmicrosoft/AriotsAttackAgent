@@ -12,16 +12,30 @@ import Agent.BashCommands.Bash_ProcessAndPortCommands
 
 
 CommandTypes = {
-    "bc": ["Agent.BashCommands.Bash_AdministrativeCommands",
-           "Agent.BashCommands.Bash_ChangeMachineFilesAndSettings",
-           "Agent.BashCommands.Bash_CustomCommand",
-           "Agent.BashCommands.Bash_FileRetrieval",
-           "Agent.BashCommands.Bash_InformationRetreivingCommands",
-           "Agent.BashCommands.Bash_ProcessAndPortCommands",
-           ],
-    "sc": ["Agent.SystemCommands.AaSystemCommands",
-           "Agent.ProcessControl.ProcessCommands"],
-    "run": ["Agent.BatchCommands.BatchCommandHandler"],
-    "BasicHelp": ["AaSystem.RequestManagment.RequestProcessor"],
-    "System": ["AaSystem.AaSystemControl.AaUpgrade"],
+    "bc":
+        [
+            "Agent.BashCommands.Bash_AdministrativeCommands",
+            "Agent.BashCommands.Bash_ChangeMachineFilesAndSettings",
+            "Agent.BashCommands.Bash_CustomCommand",
+            "Agent.BashCommands.Bash_FileRetrieval",
+            "Agent.BashCommands.Bash_InformationRetreivingCommands",
+            "Agent.BashCommands.Bash_ProcessAndPortCommands",
+        ],
+    "sc":
+        [
+            "Agent.SystemCommands.AaSystemCommands",
+            "Agent.ProcessControl.ProcessCommands"
+        ],
+    "run":
+        [
+            "Agent.BatchCommands.BatchCommandHandler"
+        ],
+    "BasicHelp":
+        [
+            "AaSystem.RequestManagment.RequestProcessor"
+        ],
+    "System":
+        [
+            "AaSystem.AaSystemControl.AaUpgrade"
+        ],
 }
