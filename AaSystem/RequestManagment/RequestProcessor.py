@@ -55,6 +55,7 @@ def BaseCommandsHelp():
                 "       All commands follow the format - [CommandName] [CommandsParameter] [CommandsParameter] ...\n"
                 "       Type -help with any CommandType for more information on that command\n\n"
                 "       Available commands types:\n"
+                "               Alerts               Performs Scenarios specifically targeted at raising IoT alerts\n"
                 "               Bash                Uses bash commands to perform tasks\n"
                 "               Scenarios           References text files containing a row delimited list of commands "
                 "to run, places these commands at the front of the queue\n"
@@ -71,6 +72,13 @@ def BashCommandList(request):
         return
     freeText = "       Uses bash commands to perform tasks"
     printHelpInfo(freeText, "bc")
+
+
+def AlertsCommandList(request):
+    if "-help" not in request:
+        return
+    freeText = "       Uses alerts commands to perform tasks"
+    printHelpInfo(freeText, "alerts")
 
 
 def ScenariosCommandList(request):
@@ -103,3 +111,4 @@ def printHelpInfo(freeText, commandTree):
 BashCommandList.PublicFacing = "Bash"
 ScenariosCommandList.PublicFacing = "Scenarios"
 SystemCommandList.PublicFacing = "System"
+AlertsCommandList.PublicFacing = "Alerts"

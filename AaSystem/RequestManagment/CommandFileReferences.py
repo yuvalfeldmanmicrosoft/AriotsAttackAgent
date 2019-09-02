@@ -9,7 +9,10 @@ import Agent.BashCommands.Bash_CustomCommand
 import Agent.BashCommands.Bash_FileRetrieval
 import Agent.BashCommands.Bash_InformationRetreivingCommands
 import Agent.BashCommands.Bash_ProcessAndPortCommands
-
+import Agent.AlertCommands.Alert_Administrative
+import Agent.AlertCommands.Alerts_ChangeMachineFilesAndSettings
+import Agent.AlertCommands.Alerts_FileRetrieval
+import Agent.AlertCommands.Alerts_ProcessAndPorts
 
 CommandTypes = {
     "bc":
@@ -20,6 +23,13 @@ CommandTypes = {
             "Agent.BashCommands.Bash_FileRetrieval",
             "Agent.BashCommands.Bash_InformationRetreivingCommands",
             "Agent.BashCommands.Bash_ProcessAndPortCommands",
+        ],
+    "alerts":
+        [
+            "Agent.AlertCommands.Alert_Administrative",
+            "Agent.AlertCommands.Alerts_ChangeMachineFilesAndSettings",
+            "Agent.AlertCommands.Alerts_FileRetrieval",
+            "Agent.AlertCommands.Alerts_ProcessAndPorts",
         ],
     "sc":
         [

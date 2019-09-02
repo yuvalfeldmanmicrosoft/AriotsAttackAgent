@@ -3,12 +3,30 @@ from AaSystem.LogAndPrint.Log import PrintAndLog, PrintRedAndLog
 from Agent.BashCommands.BashCommandExecutor import RunSubProcess
 
 
+def StopService(request):
+    if "-help" in request:
+        Help_StopService()
+        return
+
+    if not request or len(request) < 1:
+        PrintRedAndLog("Missing required parameters")
+        return
+
+    serviceName = request[0]
+    return RunSubProcess(f"sudo service {serviceName} stop")
+
+
 def ReverseShell(request):
     if "-help" in request:
         Help_ReverseShell()
         return
 
-    return RunSubProcess("python import socket /bin/sh")
+    if not request or len(request) < 1:
+        PrintRedAndLog("Missing required parameters")
+
+    path = request[0]
+
+    return RunSubProcess(f"python import socket {path}")
 
 
 def KillProcess(request):
@@ -33,12 +51,12 @@ def KillProcess(request):
 
 def Help_ReverseShell():
     return PrintAndLog("\n"
-                       "       Performs the bash command: 'python import socket /bin/sh'\n"
-                       "       Triggers alert: 'ReverseShell'")
+                       "        reverseshell [path]"
+                       "        Performs the bash command: 'python import socket [path]'\n"
+                       "                path - the path for the reverse shell")
 
 
-
-def Help_KillProcess(request):
+def Help_KillProcess():
     return PrintAndLog("\n"
                        "       Kills an active process\n"
                        "       killprocess [KillType] [KillName]\n"
@@ -56,5 +74,13 @@ def Help_KillProcess(request):
                        "the KillType")
 
 
+def Help_StopService():
+    return PrintAndLog("\n"
+                       "       Stops a service with provided name.\n"
+                       "       stopservice [ServiceName]\n"
+                       "                     'ServiceName' - The name of the service being stopped")
+
+
 ReverseShell.PublicFacing = "reverseshell"
 KillProcess.PublicFacing = "killprocess"
+StopService.PublicFacing = "stopservice"

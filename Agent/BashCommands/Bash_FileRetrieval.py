@@ -4,29 +4,20 @@ from AaSystem.LogAndPrint.Log import PrintAndLog, PrintRedAndLog
 from Agent.BashCommands.BashCommandExecutor import RunSubProcess
 
 
-def DownloadFileThenRun(request):
+def GitClone(request):
     if "-help" in request:
-        Help_DownloadFileThenRun()
+        Help_GitClone()
         return
 
-    return RunSubProcess("curl google.com | sh")
+    if not request or len(request) < 1:
+        PrintRedAndLog("Missing required parameters")
 
+    clonePath = request[0]
 
-def CryptoMiner(request):
-    if "-help" in request:
-        Help_CryptoMiner()
-        return
+    if len(request) == 2:
+        return RunSubProcess(f"git clone {clonePath} {request[1]}")
 
-    return RunSubProcess("git clone https://github.com/cpuminer")
-
-
-def DownloadVirusFile(request):
-    if "-help" in request:
-        Help_DownloadVirusFile()
-        return
-
-    return RunSubProcess("sudo mkdir -p ~/AriotsTemp/virus;sudo wget -O ~/AriotsTemp/virus/virus.txt "
-                         "https://raw.githubusercontent.com/YuvalFeldman/AttackAgentGetFile/master/virus.txt")
+    return RunSubProcess(f"git clone {clonePath}")
 
 
 def DownloadFile(request):
@@ -34,54 +25,52 @@ def DownloadFile(request):
         Help_DownloadFile()
         return
 
-    if not request:
-        PrintRedAndLog("Missing required parameter: download url")
-    url = request[0]
-    return RunSubProcess(f"sudo mkdir -p ~/AriotsTemp;sudo wget -O ~/AriotsTemp/{os.path.basename(url)} {url}")
+    if not request or len(request) < 2:
+        PrintRedAndLog("Missing required parameters")
+
+    destinationPath = request[0]
+    filePath = request[1]
+
+    return RunSubProcess(f"sudo wget -O {destinationPath} {filePath}")
 
 
-def PossibleMalware(request):
+def RetrieveFile(request):
     if "-help" in request:
-        Help_PossibleMalware(request)
+        Help_RetrieveFile()
         return
 
-    return RunSubProcess("curl pastebin.com")
+    if not request or len(request) < 1:
+        PrintRedAndLog("Missing required parameters")
+
+    filePath = request[0]
+
+    return RunSubProcess(f"curl {filePath}")
 
 
-
-def Help_DownloadFileThenRun():
+def Help_GitClone():
     return PrintAndLog("\n"
-                       "       Performs the bash command: 'curl google.com | sh'\n"
-                       "       Triggers alert: 'DownloadFileThenRun'")
-
-
-def Help_CryptoMiner():
-    return PrintAndLog("\n"
-                       "       Performs the bash command: 'git clone https://github.com/cpuminer'\n"
-                       "       Triggers alert: 'CryptoMiner'")
-
-
-def Help_DownloadVirusFile():
-    return PrintAndLog("\n"
-                       "       Performs the bash command: 'wget /home "
-                       "https://raw.githubusercontent.com/YuvalFeldman/AttackAgentGetFile/master/virus.txt'\n"
-                       "       Downloads a 'suspicious file from the internet")
+                       "       Clones a public git repository'\n"
+                       "       gitclone [path] [cloneDestination=optional]\n"
+                       "                'path' = the full clone url\n"
+                       "                'cloneDestination' = an optional path indicating the destination to clone to\n"
+                       )
 
 
 def Help_DownloadFile():
     return PrintAndLog("\n"
-                       "       Receives one parameter [URL] and performs a wget request from that url\n"
-                       "       Performs the bash command: 'wget ~/AriotsTemp/ [requestUrl]'")
+                       "        downloadfile [destination] [fileURL]\n"
+                       "                'destination' - the destination the file will be downloaded to"
+
+                       "                'fileURL' - the URL to the file being downloaded")
 
 
-def Help_PossibleMalware(request):
+def Help_RetrieveFile():
     return PrintAndLog("\n"
-                       "       Performs the bash command: 'curl pastebin.com'\n"
-                       "       Triggers alert: 'PossibleMalware'")
+                       "        Performs the curl command to get a file into the terminal\n"
+                       "        retrievefile [fileURL]\n"
+                       "                'fileURL' - the URL to the file being downloaded\n")
 
 
-DownloadFileThenRun.PublicFacing = "downloadfilethenrun"
-CryptoMiner.PublicFacing = "cryptominer"
-DownloadVirusFile.PublicFacing = "downloadvirusfile"
+GitClone.PublicFacing = "gitclone"
 DownloadFile.PublicFacing = "downloadfile"
-PossibleMalware.PublicFacing = "possiblemalware"
+RetrieveFile.PublicFacing = "retrievefile"

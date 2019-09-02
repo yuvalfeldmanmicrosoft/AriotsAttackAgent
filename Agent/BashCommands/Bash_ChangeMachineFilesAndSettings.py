@@ -1,140 +1,102 @@
 #!/usr/bin/python3
-from AaSystem.LogAndPrint.Log import PrintAndLog
+from AaSystem.LogAndPrint.Log import PrintAndLog, PrintRedAndLog
 from Agent.BashCommands.BashCommandExecutor import RunSubProcess
 
 
-def RemovelOfSystemLogs(request):
+def DeleteFiles(request):
     if "-help" in request:
-        Help_RemovelOfSystemLogs()
+        Help_DeleteFiles()
         return
 
-    return RunSubProcess("rm /var/log/lastlog")
+    if not request or len(request) < 2:
+        PrintRedAndLog("Missing required parameters")
+
+    deleteType = request[0]
+    path = request[1]
+
+    if deleteType == "-f":
+        return RunSubProcess(f"sudo rm {path}")
+    if deleteType == "-d":
+        return RunSubProcess(f"sudo rm -rf {path}")
+
+    PrintRedAndLog("Invalid parameter passed")
 
 
-def Ransomware(request):
+def CreateFile(request):
     if "-help" in request:
-        Help_Ransomware()
+        Help_DeleteFiles()
         return
 
-    return RunSubProcess("touch test.GNNCRY")
+    if not request or len(request) < 2:
+        PrintRedAndLog("Missing required parameters")
+
+    createType = request[0]
+    path = request[1]
+
+    if createType == "-f":
+        return RunSubProcess(f"sudo touch {path}")
+    if createType == "-f-bus":
+        return RunSubProcess(f"sudo touch d-bus {path}")
+    if createType == "-d":
+        return RunSubProcess(f"sudo mkdir -p {path}")
+
+    PrintRedAndLog("Invalid parameter passed")
 
 
-def OverrideLinuxFiles(request):
+def CopyFile(request):
     if "-help" in request:
-        Help_OverrideLinuxFiles()
+        Help_DeleteFiles()
         return
 
-    return RunSubProcess("cp /bin/netstat a")
+    if not request or len(request) < 3:
+        PrintRedAndLog("Missing required parameters")
+
+    createType = request[0]
+    originPath = request[1]
+    destinationPath = request[2]
+
+    if createType == "-f":
+        return RunSubProcess(f"sudo cp {originPath} {destinationPath}")
+    if createType == "-d":
+        return RunSubProcess(f"sudo cp -avr {originPath} {destinationPath}")
+
+    PrintRedAndLog("Invalid parameter passed")
 
 
-def LinuxBackdoor(request):
-    if "-help" in request:
-        Help_LinuxBackdoor()
-        return
-
-    return RunSubProcess("touch d-bus notifier")
-
-
-def FairwareMalware(request):
-    if "-help" in request:
-        Help_FairwareMalware()
-        return
-
-    return RunSubProcess("rm -rf /data/")
-
-
-def EgressData(request):
-    if "-help" in request:
-        Help_EgressData()
-        return
-
-    return RunSubProcess("bash /dev/tcp/")
-
-
-def DisableFirewall(request):
-    if "-help" in request:
-        Help_DisableFirewall()
-        return
-
-    return RunSubProcess("touch f0VMRgIBAQ")
-
-
-def CommonBots(request):
-    if "-help" in request:
-        Help_CommonBots()
-        return
-
-    return RunSubProcess("touch RTEGFN01.dat")
-
-
-def ClearHistoryFile(request):
-    if "-help" in request:
-        Help_ClearHistoryFile()
-        return
-
-    return RunSubProcess("history -c")
-
-
-def Help_RemovelOfSystemLogs():
+def Help_DeleteFiles():
     return PrintAndLog("\n"
-                       "       Performs the bash command: 'rm /var/log/lastlog'\n"
-                       "       Triggers alert: 'RemovelOfSystemLogs'")
+                       "       Deletes a file or directory'\n"
+                       "       deletefiles [deleteType] [path]\n"
+                       "                deleteType options:\n"
+                       "                     '-f' - Delete single file\n"
+                       "                     '-d' - Delete entire directory and all its contents\n"
+                       "                'path' - the path of the file being creating including its name"
+                       )
 
 
-def Help_Ransomware():
+def Help_CreateFile():
     return PrintAndLog("\n"
-                       "Performs the bash command: 'touch test.GNNCRY'\n"
-                       "Triggers alert: 'Ransomware'")
+                       "       Creates a file or directory'\n"
+                       "       createfile [creationType] [path]\n"
+                       "                creationType options:\n"
+                       "                     '-f' - Create single empty file\n"
+                       "                     '-f-bus' - Create single empty file on the d-bus\n"
+                       "                     '-d' - Create a single empty directory\n"
+                       )
 
 
-def Help_OverrideLinuxFiles():
+def Help_CopyFile():
     return PrintAndLog("\n"
-                       "       Performs the bash command: 'cp /bin/netstat a'\n"
-                       "       Triggers alert: 'OverrideLinuxFiles'")
+                       "       Copies a file or directory'\n"
+                       "       copyfile [copyType] [originPath] [destinationPath]\n"
+                       "                copyType options:\n"
+                       "                     '-f' - Copy single empty file\n"
+                       "                     '-d' - Copy a single empty directory\n"
+                       "                'originPath' - the file or directory to copy\n"
+                       "                'destinationPath' - the path where the copy will be created\n"
+                       )
 
 
-def Help_LinuxBackdoor():
-    return PrintAndLog("\n"
-                       "       Performs the bash command: 'touch d-bus notifier'\n"
-                       "       Triggers alert: 'LinuxBackdoor'")
-
-
-def Help_FairwareMalware():
-    return PrintAndLog("\n"
-                       "       Performs the bash command: 'rm -rf /data/'\n"
-                       "       Triggers alert: 'FairwareMalware'")
-
-
-def Help_EgressData():
-    return PrintAndLog("\n"
-                       "       Performs the bash command: 'bash /dev/tcp/'\n"
-                       "       Triggers alert: 'EgressData'")
-
-
-def Help_DisableFirewall():
-    return PrintAndLog("\n"
-                       "       Performs the bash command: 'touch f0VMRgIBAQ'\n"
-                       "       Triggers alert: 'DisableFirewall'")
-
-
-def Help_CommonBots():
-    return PrintAndLog("\n"
-                       "       Performs the bash command: 'touch RTEGFN01.dat'\n"
-                       "       Triggers alert: 'CommonBots'")
-
-
-def Help_ClearHistoryFile():
-    return PrintAndLog("\n"
-                       "       Performs the bash command: 'history -c'\n"
-                       "       Triggers alert: 'ClearHistoryFile'")
-
-
-RemovelOfSystemLogs.PublicFacing = "removelofsystemlogs"
-Ransomware.PublicFacing = "ransomware"
-OverrideLinuxFiles.PublicFacing = "overridelinuxfiles"
-LinuxBackdoor.PublicFacing = "linuxbackdoor"
-FairwareMalware.PublicFacing = "fairwaremalware"
-EgressData.PublicFacing = "egressdata"
-DisableFirewall.PublicFacing = "disablefirewall"
-CommonBots.PublicFacing = "commonbots"
-ClearHistoryFile.PublicFacing = "clearhistoryfile"
+DeleteFiles.PublicFacing = "deletefiles"
+CreateFile.PublicFacing = "createfile"
+CopyFile.PublicFacing = "copyfile"

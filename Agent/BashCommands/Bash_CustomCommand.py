@@ -11,7 +11,7 @@ def PerformCustomCommand(request):
         Help_PerformCustomCommand()
         return
 
-    return RunSubProcess(request[0])
+    return RunSubProcess(' '.join(request))
 
 
 def Help_PerformCustomCommand():
