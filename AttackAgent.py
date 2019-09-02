@@ -3,9 +3,11 @@ import sys
 from AaSystem.LogAndPrint.Log import PrintRedAndLog, PrintAndLog, WriteToLog
 from AaSystem.OperatingSystem.AriotsShield import RunningOnPermittedMachine
 from AaSystem.EventQueue.CommandQueue import EnqueueCommand
-from AaSystem.RequestManagment.RequestProcessor import CreateCommandConnections, RunCommands
+from AaSystem.RequestManagment.PublicEndpointMap import CreatePublicEndpointMap
+from AaSystem.RequestManagment.RequestProcessor import RunCommands
 
-CreateCommandConnections()
+
+CreatePublicEndpointMap()
 
 
 def EnqueueAndRun(request):

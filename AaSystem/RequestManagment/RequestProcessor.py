@@ -1,24 +1,8 @@
 #!/usr/bin/python3
-from AaSystem.RequestManagment.CommandFileReferences import *
+from AaSystem.RequestManagment.PublicEndpointMap import CommandMapping, CommandMappingNameByTree
 from AaSystem.LogAndPrint.Log import PrintAndLog, PrintRedAndLog
 from AaSystem.EventQueue.CommandQueue import EmptyCommandQueue, DeQueueCommand, CommandQueueNotEmpty
 from AaSystem.RequestManagment.RequestBuilder import ParseRequest
-from AaSystem.Reflection.Reflect import GetPublicFacingFunctionsFromPath
-
-
-CommandMapping = {}
-CommandMappingNameByTree = {}
-
-
-def CreateCommandConnections():
-    for commandType in CommandTypes:
-        if commandType not in CommandMappingNameByTree:
-            CommandMappingNameByTree[commandType] = []
-        for commandPath in CommandTypes[commandType]:
-            commands = GetPublicFacingFunctionsFromPath(commandPath)
-            for command in commands:
-                CommandMapping[str.lower(command[1].PublicFacing)] = command[1]
-                CommandMappingNameByTree[commandType].append(command[1].PublicFacing)
 
 
 def RunCommand(request):
@@ -71,14 +55,14 @@ def BashCommandList(request):
     if "-help" not in request:
         return
     freeText = "       Uses bash commands to perform tasks"
-    printHelpInfo(freeText, "bc")
+    printHelpInfo(freeText, "Bash")
 
 
 def AlertsCommandList(request):
     if "-help" not in request:
         return
     freeText = "       Uses alerts commands to perform tasks"
-    printHelpInfo(freeText, "alerts")
+    printHelpInfo(freeText, "Alerts")
 
 
 def ScenariosCommandList(request):
@@ -86,7 +70,7 @@ def ScenariosCommandList(request):
         return
     freeText = "       References text files containing a row delimited list of commands " \
                "to run, places these commands at the front of the queue"
-    printHelpInfo(freeText, "run")
+    printHelpInfo(freeText, "Scenario")
 
 
 def SystemCommandList(request):
@@ -94,7 +78,7 @@ def SystemCommandList(request):
         return
     freeText = "       Perform program and environment commands such as waiting, " \
                "looping, handling environment variables and so on"
-    printHelpInfo(freeText, "sc")
+    printHelpInfo(freeText, "System")
 
 
 def printHelpInfo(freeText, commandTree):
