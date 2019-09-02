@@ -32,3 +32,5 @@ if len(sys.argv) > 1:
         PrintRedAndLog("Not running on non Ariots permitted machine. Exiting")
 elif __name__ == '__main__':
     WaitForInput()
+
+print(__name__)

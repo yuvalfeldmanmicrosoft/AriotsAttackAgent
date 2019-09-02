@@ -22,7 +22,10 @@ class RunProcess(ICommand):
 
     def HelpRequested(self):
         PrintAndLog("\n"
-                    "       Run async process help requested\n")
+                    "       Async creates a new process and runs a provided command on that process. The "
+                    "provided command can be a scenario command"
+                    "       async [command]\n"
+                    "               'command' - The command that will be run in a new process\n")
 
 
 RunProcess.PublicFacing = "async"
