@@ -44,6 +44,7 @@ class Wait(ICommand):
                     "                                   -d: days\n"
                     "       'WaitTime: The amount of time that will be waited'\n")
 
+
 class Loop(ICommand):
     def Execute(self):
         if self.CheckHelpRequested():
