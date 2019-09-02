@@ -1,10 +1,16 @@
 #!/usr/bin/python3
 import sys
+from AaSystem.LogAndPrint.Log import PrintRedAndLog, PrintAndLog, WriteToLog
+from AaSystem.OperatingSystem.AriotsShield import RunningOnPermittedMachine
+from AaSystem.EventQueue.CommandQueue import EnqueueCommand
+from AaSystem.RequestManagment.RequestProcessor import CreateCommandConnections, RunCommands
 
-from Agent.AaSystem.AriotsShield import RunningOnPermittedMachine
-from Agent.AaSystem.Log import PrintRedAndLog, PrintAndLog, WriteToLog
-from Agent.AttackAgent.BaseCommands.CommandExecutor import RunCommands
-from Agent.AttackAgent.BaseCommands.CommandQueue import EnqueueCommand
+CreateCommandConnections()
+
+
+def EnqueueAndRun(request):
+    EnqueueCommand(request)
+    RunCommands()
 
 
 def WaitForInput():
@@ -13,17 +19,13 @@ def WaitForInput():
         return
     PrintAndLog("Hello, Welcome to the Linux based ArIoTS Attack Agent. Type --help at any stage for more information")
     while True:
-        userInput = input("\nPlease enter your next command, type help for options\n")
-        WriteToLog(f"User input: {userInput}")
-        EnqueueCommand(userInput)
-        RunCommands()
+        EnqueueAndRun(input("\nPlease enter your next command, type help for options\n"))
 
 
 if len(sys.argv) > 1:
     if RunningOnPermittedMachine():
         WriteToLog(f"User input: {sys.argv}")
-        EnqueueCommand(" ".join(sys.argv[1:]))
-        RunCommands()
+        EnqueueAndRun(" ".join(sys.argv[1:]))
     else:
         PrintRedAndLog("Not running on non Ariots permitted machine. Exiting")
 elif __name__ == '__main__':

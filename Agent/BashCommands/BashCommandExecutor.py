@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import subprocess
-from Agent.AaSystem.Log import PrintAndLog, PrintRedAndLog, PrintBlueAndLog
+from AaSystem.LogAndPrint.Log import PrintAndLog, PrintRedAndLog, PrintBlueAndLog
 
 
 def RunSubProcess(commandLineInput):
