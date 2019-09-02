@@ -74,5 +74,95 @@ class Loop(ICommand):
                     "by parentheses that will be repeated in the loop\n")
 
 
+class ForEach(ICommand):
+    def Execute(self):
+        if self.CheckHelpRequested():
+            return
+        if self.CheckMinimunRequiredParameters(2):
+            return
+        readSource = self.request[0]
+        command = self.request[1]
+        swapString = self.request[2]
+
+        if readSource == "-p":
+            parameters = self.request[3:]
+        elif readSource == "-f":
+            url = self.request[3]
+            try:
+                with open(url, "r") as file:
+                    commandLines = list(file.read().splitlines())
+                    PrintAndLog(f"Adding {len(commandLines)} commands using commands from {url}")
+                file.close()
+            except Exception as ex:
+                print(f"Failed to load command batch file, exception encountered:\n")
+                PrintRedAndLog(ex)
+        else:
+            PrintRedAndLog(f"No supported read source parameter {readSource}")
+            return
+        splitParameters = []
+
+        for param in parameters:
+            if "," in param:
+                splitParameters.extend(param.split(","))
+                continue
+            splitParameters.append(param)
+        newCommands = [command.replace(swapString, param) for param in splitParameters]
+        self.context.CommandQueue.EnqueueCommandsNext(newCommands)
+
+    def HelpRequested(self):
+        PrintAndLog("\n"
+                    "       A for loop on the provided function\n"
+                    "       Command parameters: [Repetitions] [function]\n"
+                    "                     'Repetitions' - An integer indicating the amount of "
+                    "times to perform the provided function\n"
+                    "                     'function' - an Attack Agent function surrounded "
+                    "by parentheses that will be repeated in the loop\n")
+
+class AsyncForEach(ICommand):
+    def Execute(self):
+        if self.CheckHelpRequested():
+            return
+        if self.CheckMinimunRequiredParameters(2):
+            return
+        readSource = self.request[0]
+        command = self.request[1]
+        swapString = self.request[2]
+
+        if readSource == "-p":
+            parameters = self.request[3:]
+        elif readSource == "-f":
+            url = self.request[3]
+            try:
+                with open(url, "r") as file:
+                    commandLines = list(file.read().splitlines())
+                    PrintAndLog(f"Adding {len(commandLines)} commands using commands from {url}")
+                file.close()
+            except Exception as ex:
+                print(f"Failed to load command batch file, exception encountered:\n")
+                PrintRedAndLog(ex)
+        else:
+            PrintRedAndLog(f"No supported read source parameter {readSource}")
+            return
+        splitParameters = []
+
+        for param in parameters:
+            if "," in param:
+                splitParameters.extend(param.split(","))
+                continue
+            splitParameters.append(param)
+        newCommands = [command.replace(swapString, param) for param in splitParameters]
+        self.context.CommandQueue.EnqueueCommandsNext("asyncpool")
+
+    def HelpRequested(self):
+        PrintAndLog("\n"
+                    "       A for loop on the provided function\n"
+                    "       Command parameters: [Repetitions] [function]\n"
+                    "                     'Repetitions' - An integer indicating the amount of "
+                    "times to perform the provided function\n"
+                    "                     'function' - an Attack Agent function surrounded "
+                    "by parentheses that will be repeated in the loop\n")
+
+
 Wait.PublicFacing = "wait"
 Loop.PublicFacing = "loop"
+AsyncForEach.PublicFacing = "asyncforeach"
