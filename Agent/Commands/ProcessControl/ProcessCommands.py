@@ -25,4 +25,4 @@ class RunProcess(ICommand):
                     "       Run async process help requested\n")
 
 
-# RunProcess.PublicFacing = "async"
+RunProcess.PublicFacing = "async"

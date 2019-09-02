@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 import datetime
+import sys
+
 from AaSystem.LogAndPrint.Colors import CommandLineColors
 from AaSystem.OperatingSystem.SystemInspector import GetOperatingSystemName
 
@@ -46,6 +48,7 @@ def PrintColorAndLog(text, color):
 
 def PrintAndLog(text):
     print(text)
+    sys.stdout.flush()
     WriteToLog(text)
 
 
