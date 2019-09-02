@@ -3,7 +3,6 @@ import queue
 import shlex
 from AaSystem.EndpointMap.EndpointMap import CommandMapping
 from AaSystem.LogAndPrint.Log import PrintRedAndLog
-from Agent.BasicHelpers.BasicHelpCommands import BaseCommandsHelp
 
 
 class CommandQueue:
@@ -19,17 +18,20 @@ class CommandQueue:
         return not self.commandQueue.empty()
 
     def EnqueueCommand(self, command):
-        self.commandQueue.put(command)
+        commandClass = self.GetCommandClass(command)
+        self.commandQueue.put(commandClass)
 
     def EnqueueCommands(self, commands):
         for command in commands:
-            self.commandQueue.put(command)
+            commandClass = self.GetCommandClass(command)
+            self.commandQueue.put(commandClass)
 
     def EnqueueCommandsNext(self, commands):
         while not self.commandQueue.empty():
             self.tempQueue.put(self.commandQueue.get())
         for command in commands:
-            self.commandQueue.put(command)
+            commandClass = self.GetCommandClass(command)
+            self.commandQueue.put(commandClass)
         while not self.tempQueue.empty():
             self.commandQueue.put(self.tempQueue.get())
 
@@ -40,20 +42,17 @@ class CommandQueue:
         while not self.commandQueue.empty():
             self.commandQueue.get()
 
-    def RunCommand(self, request):
+    def GetCommandClass(self, request):
         if not request:
             PrintRedAndLog("Request cannot be null or empty")
             return False
-
         request = shlex.split(request)
-
         if len(request) < 1:
-            PrintRedAndLog("Request Missing parameters")
+            PrintRedAndLog("")
             return False
+
         requestedCommand = str.lower(request[0])
-        if requestedCommand == "-help":
-            BaseCommandsHelp()
-            return True
+
         if requestedCommand not in CommandMapping:
             PrintRedAndLog(f"No such supported command '{requestedCommand}'")
             return False
@@ -61,8 +60,11 @@ class CommandQueue:
 
     def RunCommands(self):
         while self.CommandQueueNotEmpty():
-            request = self.DeQueueCommand()
-            success = self.RunCommand(request)
-            if success is not None and not success:
+            command = self.DeQueueCommand()
+            try:
+                command.Execute()
+            except Exception as ex:
+                PrintRedAndLog(f"Failed execute bash command '{ex}', exception encountered:\n")
                 self.EmptyCommandQueue()
                 return
+

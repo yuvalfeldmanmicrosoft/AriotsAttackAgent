@@ -3,7 +3,7 @@ import sys
 
 
 def GetFunctionsFromPath(filePath):
-    return inspect.getmembers(sys.modules[filePath], inspect.isfunction)
+    return inspect.getmembers(sys.modules[filePath], inspect.isclass)
 
 
 def GetFunctionsWithAttributeFromPath(filePath, attribute):

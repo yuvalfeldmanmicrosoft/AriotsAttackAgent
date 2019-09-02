@@ -2,29 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="18d4f685-5b87-4468-8335-a73e544c5d36" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Agent/Commands/AlertCommands/Alert_Administrative.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Agent/Commands/AlertCommands/Alerts_ChangeMachineFilesAndSettings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Agent/Commands/AlertCommands/Alerts_FileRetrieval.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Agent/Commands/AlertCommands/Alerts_InformationRetrieval.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Agent/Commands/AlertCommands/Alerts_ProcessAndPorts.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AaSystem/AaSystemControl/AaUpgrade.py" beforeDir="false" afterPath="$PROJECT_DIR$/AaSystem/AaSystemControl/AaUpgrade.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AaSystem/EndpointMap/EndpointMapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/AaSystem/EndpointMap/EndpointMapper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AaSystem/EventQueue/CommandQueue.py" beforeDir="false" afterPath="$PROJECT_DIR$/AaSystem/EventQueue/CommandQueue.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AaSystem/RequestManagment/PublicEndpointMap.py" beforeDir="false" afterPath="$PROJECT_DIR$/AaSystem/EndpointMap/EndpointMap.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AaSystem/RequestManagment/PublicEndpointMapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/AaSystem/EndpointMap/EndpointMapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AaSystem/RequestManagment/RequestBuilder.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AaSystem/RequestManagment/RequestProcessor.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AaSystem/RequestManagment/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/AlertCommands/Alert_Administrative.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/AlertCommands/Alert_Administrative.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/AlertCommands/Alerts_ChangeMachineFilesAndSettings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/AlertCommands/Alerts_ChangeMachineFilesAndSettings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/AlertCommands/Alerts_FileRetrieval.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/AlertCommands/Alerts_FileRetrieval.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/AlertCommands/Alerts_InformationRetrieval.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/AlertCommands/Alerts_InformationRetrieval.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/AlertCommands/Alerts_ProcessAndPorts.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/AlertCommands/Alerts_ProcessAndPorts.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/BashCommands/Bash_AdministrativeCommands.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/BashCommands/Bash_AdministrativeCommands.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/BashCommands/Bash_ChangeMachineFilesAndSettings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/BashCommands/Bash_ChangeMachineFilesAndSettings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/BashCommands/Bash_CustomCommand.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/BashCommands/Bash_CustomCommand.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/BashCommands/Bash_FileRetrieval.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/BashCommands/Bash_FileRetrieval.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/BashCommands/Bash_InformationRetreivingCommands.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/BashCommands/Bash_InformationRetreivingCommands.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/BashCommands/Bash_ProcessAndPortCommands.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/BashCommands/Bash_ProcessAndPortCommands.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/BasicHelpers/BasicHelpCommands.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/BasicHelpers/BasicHelpCommands.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/BatchCommands/BatchCommandHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/BatchCommands/BatchCommandHandler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/ProcessControl/ProcessCommands.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/ProcessControl/ProcessCommands.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/SystemCommands/AaSystemCommands.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/SystemCommands/AaSystemCommands.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AttackAgent.py" beforeDir="false" afterPath="$PROJECT_DIR$/AttackAgent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AaSystem/Reflection/Reflect.py" beforeDir="false" afterPath="$PROJECT_DIR$/AaSystem/Reflection/Reflect.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/AlertCommands/Alert_Administrative.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/AlertCommands/Alerts_ChangeMachineFilesAndSettings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/AlertCommands/Alerts_FileRetrieval.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/AlertCommands/Alerts_InformationRetrieval.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/AlertCommands/Alerts_ProcessAndPorts.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/AlertCommands/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/Commands/AlertCommands/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/BashCommands/BashCommandExecutor.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/Commands/BashCommands/BashCommandExecutor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/BashCommands/Bash_AdministrativeCommands.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/Commands/BashCommands/Bash_AdministrativeCommands.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/BashCommands/Bash_ChangeMachineFilesAndSettings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/Commands/BashCommands/Bash_ChangeMachineFilesAndSettings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/BashCommands/Bash_CustomCommand.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/Commands/BashCommands/Bash_CustomCommand.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/BashCommands/Bash_FileRetrieval.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/Commands/BashCommands/Bash_FileRetrieval.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/BashCommands/Bash_InformationRetreivingCommands.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/Commands/BashCommands/Bash_InformationRetreivingCommands.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/BashCommands/Bash_ProcessAndPortCommands.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/Commands/BashCommands/Bash_ProcessAndPortCommands.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/BashCommands/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/Commands/BashCommands/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/BasicHelpers/BasicHelpCommands.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/Commands/BasicHelpers/BasicHelpCommands.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/BasicHelpers/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/Commands/BasicHelpers/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/BatchCommands/BatchCommandHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/Commands/BatchCommands/BatchCommandHandler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/BatchCommands/Scripts/help2" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/Commands/BatchCommands/Scripts/help2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/BatchCommands/Scripts/helpall" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/Commands/BatchCommands/Scripts/helpall" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/BatchCommands/Scripts/helpme3" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/Commands/BatchCommands/Scripts/helpme3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/BatchCommands/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/Commands/BatchCommands/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/ProcessControl/ProcessCommands.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/Commands/ProcessControl/ProcessCommands.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/ProcessControl/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/Commands/ProcessControl/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/SystemCommands/AaSystemCommands.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/Commands/SystemCommands/AaSystemCommands.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/SystemCommands/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/Commands/SystemCommands/__init__.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,11 +64,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Project\AttackAgent\Agent\Commands" />
       <recent name="C:\Project\AttackAgent\AaSystem\EndpointMap" />
       <recent name="C:\Project\AttackAgent\Agent" />
       <recent name="C:\Project\AttackAgent\AaSystem" />
       <recent name="C:\Project\AttackAgent\AaSystem\AaSystemControl" />
-      <recent name="C:\Project\AttackAgent\AaSystem\OperatingSystem" />
     </key>
   </component>
   <component name="RunDashboard">

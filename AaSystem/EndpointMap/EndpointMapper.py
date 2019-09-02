@@ -1,51 +1,50 @@
 #!/usr/bin/python3
 from AaSystem.EndpointMap.EndpointMap import CommandMappingNameByTree, CommandMapping
 from AaSystem.Reflection.Reflect import GetPublicFacingFunctionsFromPath
-import Agent.BashCommands.Bash_AdministrativeCommands
-import Agent.BashCommands.Bash_ChangeMachineFilesAndSettings
-import Agent.BashCommands.Bash_CustomCommand
-import Agent.BashCommands.Bash_FileRetrieval
-import Agent.BashCommands.Bash_InformationRetreivingCommands
-import Agent.BashCommands.Bash_ProcessAndPortCommands
-import Agent.AlertCommands.Alert_Administrative
-import Agent.AlertCommands.Alerts_ChangeMachineFilesAndSettings
-import Agent.AlertCommands.Alerts_FileRetrieval
-import Agent.AlertCommands.Alerts_ProcessAndPorts
-import Agent.SystemCommands.AaSystemCommands
-import Agent.ProcessControl.ProcessCommands
-import Agent.BatchCommands.BatchCommandHandler
-import Agent.BasicHelpers.BasicHelpCommands
+import Agent.Commands.BashCommands.Bash_AdministrativeCommands
+import Agent.Commands.BashCommands.Bash_ChangeMachineFilesAndSettings
+import Agent.Commands.BashCommands.Bash_CustomCommand
+import Agent.Commands.BashCommands.Bash_FileRetrieval
+import Agent.Commands.BashCommands.Bash_InformationRetreivingCommands
+import Agent.Commands.BashCommands.Bash_ProcessAndPortCommands
+import Agent.Commands.AlertCommands.Alert_Administrative
+import Agent.Commands.AlertCommands.Alerts_ChangeMachineFilesAndSettings
+import Agent.Commands.AlertCommands.Alerts_FileRetrieval
+import Agent.Commands.AlertCommands.Alerts_ProcessAndPorts
+import Agent.Commands.SystemCommands.AaSystemCommands
+import Agent.Commands.ProcessControl.ProcessCommands
+import Agent.Commands.BatchCommands.BatchCommandHandler
+import Agent.Commands.BasicHelpers.BasicHelpCommands
 import AaSystem.AaSystemControl.AaUpgrade
 
 CommandTypes = {
     "Bash":
         [
-            "Agent.BashCommands.Bash_AdministrativeCommands",
-            "Agent.BashCommands.Bash_ChangeMachineFilesAndSettings",
-            "Agent.BashCommands.Bash_CustomCommand",
-            "Agent.BashCommands.Bash_FileRetrieval",
-            "Agent.BashCommands.Bash_InformationRetreivingCommands",
-            "Agent.BashCommands.Bash_ProcessAndPortCommands",
+            "Agent.Commands.BashCommands.Bash_AdministrativeCommands",
+            "Agent.Commands.BashCommands.Bash_ChangeMachineFilesAndSettings",
+            "Agent.Commands.BashCommands.Bash_CustomCommand",
+            "Agent.Commands.BashCommands.Bash_FileRetrieval",
+            "Agent.Commands.BashCommands.Bash_InformationRetreivingCommands",
+            "Agent.Commands.BashCommands.Bash_ProcessAndPortCommands",
         ],
     "Alerts":
         [
-            "Agent.AlertCommands.Alert_Administrative",
-            "Agent.AlertCommands.Alerts_ChangeMachineFilesAndSettings",
-            "Agent.AlertCommands.Alerts_FileRetrieval",
-            "Agent.AlertCommands.Alerts_ProcessAndPorts",
+            "Agent.Commands.AlertCommands.Alert_Administrative",
+            "Agent.Commands.AlertCommands.Alerts_ChangeMachineFilesAndSettings",
+            "Agent.Commands.AlertCommands.Alerts_FileRetrieval",
+            "Agent.Commands.AlertCommands.Alerts_ProcessAndPorts",
         ],
     "System":
         [
-            "Agent.SystemCommands.AaSystemCommands",
-            "Agent.ProcessControl.ProcessCommands"
+            "Agent.Commands.ProcessControl.ProcessCommands"
         ],
     "Scenario":
         [
-            "Agent.BatchCommands.BatchCommandHandler"
+            "Agent.Commands.BatchCommands.BatchCommandHandler"
         ],
     "BasicHelp":
         [
-            "Agent.BasicHelpers.BasicHelpCommands"
+            "Agent.Commands.BasicHelpers.BasicHelpCommands"
         ],
     "Program":
         [
