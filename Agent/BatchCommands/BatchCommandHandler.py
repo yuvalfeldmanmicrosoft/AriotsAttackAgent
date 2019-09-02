@@ -3,7 +3,6 @@ import ntpath
 from AaSystem.LogAndPrint.Log import PrintAndLog, PrintRedAndLog
 from os import listdir
 from os.path import isfile, join
-from AaSystem.EventQueue.CommandQueue import EnqueueCommandsNext
 
 
 SupportedRequestTypes = ["-help", "-f", "-p"]
@@ -40,7 +39,7 @@ def HelpRequested():
     PrintAndLog(text)
 
 
-def RunScenario(request):
+def RunScenario(request, context):
     if not request:
         PrintRedAndLog("Missing required parameters")
         return
@@ -70,7 +69,7 @@ def RunScenario(request):
         with open(filePath, "r") as file:
             commandLines = list(filter(lambda a: not a.startswith('#'), list(file.read().splitlines())))
             PrintAndLog(f"Adding {len(commandLines)} Commands from {ntpath.basename(filePath)}")
-            EnqueueCommandsNext(commandLines)
+            context.EnqueueCommandsNext(commandLines)
         file.close()
     except Exception as ex:
         print(f"Failed to load command batch file, exception encountered:\n")

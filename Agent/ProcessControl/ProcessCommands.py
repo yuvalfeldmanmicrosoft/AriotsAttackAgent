@@ -6,7 +6,7 @@ from AaSystem.LogAndPrint.Log import PrintRedAndLog
 Processes = {}
 
 
-def RunProcess(request):
+def RunProcess(request, context):
     print("running!")
     # if processName in Processes:
     #     PrintRedAndLog(f"Process {processName} is an active process. Cannot run multiple processes by the same name.")
@@ -16,19 +16,19 @@ def RunProcess(request):
     # newProcess.start()
 
 
-def StopProcess(request):
+def StopProcess(request, context):
     print("stopping!")
     # if processName in Processes:
     #     Processes[processName].terminate()
 
 
-def GetProcess(request):
+def GetProcess(request, context):
     print("getting!")
     # if processName in Processes:
     #     return Processes[processName]
 
 
-def WaitForProcess(request):
+def WaitForProcess(request, context):
     print("waiting!")
     # try:
     #     if processName in Processes:

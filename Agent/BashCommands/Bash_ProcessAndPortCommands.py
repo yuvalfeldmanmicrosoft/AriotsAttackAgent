@@ -3,7 +3,7 @@ from AaSystem.LogAndPrint.Log import PrintAndLog, PrintRedAndLog
 from Agent.BashCommands.BashCommandExecutor import RunSubProcess
 
 
-def StopService(request):
+def StopService(request, context):
     if "-help" in request:
         Help_StopService()
         return
@@ -16,7 +16,7 @@ def StopService(request):
     return RunSubProcess(f"sudo service {serviceName} stop")
 
 
-def ReverseShell(request):
+def ReverseShell(request, context):
     if "-help" in request:
         Help_ReverseShell()
         return
@@ -29,7 +29,7 @@ def ReverseShell(request):
     return RunSubProcess(f"python import socket {path}")
 
 
-def KillProcess(request):
+def KillProcess(request, context):
     if "-help" in request:
         Help_KillProcess(request)
         return

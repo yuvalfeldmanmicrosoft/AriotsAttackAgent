@@ -4,7 +4,7 @@ from AaSystem.LogAndPrint.Log import PrintAndLog, PrintRedAndLog
 from Agent.BashCommands.BashCommandExecutor import RunSubProcess
 
 
-def PerformCustomCommand(request):
+def PerformCustomCommand(request, context):
     if not request:
         PrintRedAndLog("Missing bash command")
     if "-help" in request:

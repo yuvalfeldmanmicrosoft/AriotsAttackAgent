@@ -1,64 +1,68 @@
 #!/usr/bin/python3
 import queue
+import shlex
+from AaSystem.EndpointMap.EndpointMap import CommandMapping
+from AaSystem.LogAndPrint.Log import PrintRedAndLog
+from Agent.BasicHelpers.BasicHelpCommands import BaseCommandsHelp
 
 
-commandQueue = "commandQueue"
-tempQueue = "tempQueue"
+class CommandQueue:
+    def __init__(self):
+        self.commandQueue = queue.Queue()
+        self.tempQueue = queue.Queue()
+        self.context = None
 
+    def SetContext(self, context):
+        self.context = context
 
-CommandQueues = {
-    "main": {
-        commandQueue: queue.Queue(),
-        tempQueue: queue.Queue()
-    }
-}
+    def CommandQueueNotEmpty(self):
+        return not self.commandQueue.empty()
 
+    def EnqueueCommand(self, command):
+        self.commandQueue.put(command)
 
-def CreateNewCommandQueueIfNonExist(queueName):
-    if queueName in CommandQueues:
-        return
-    newQueue = {
-        commandQueue: queue.Queue(),
-        tempQueue: queue.Queue()
-    }
-    CommandQueues[queueName] = newQueue
+    def EnqueueCommands(self, commands):
+        for command in commands:
+            self.commandQueue.put(command)
 
+    def EnqueueCommandsNext(self, commands):
+        while not self.commandQueue.empty():
+            self.tempQueue.put(self.commandQueue.get())
+        for command in commands:
+            self.commandQueue.put(command)
+        while not self.tempQueue.empty():
+            self.commandQueue.put(self.tempQueue.get())
 
-def CommandQueueNotEmpty(queueName="main"):
-    CreateNewCommandQueueIfNonExist(queueName)
-    return not CommandQueues[queueName][commandQueue].empty()
+    def DeQueueCommand(self):
+        return self.commandQueue.get() if self.CommandQueueNotEmpty() else None
 
+    def EmptyCommandQueue(self):
+        while not self.commandQueue.empty():
+            self.commandQueue.get()
 
-def EnqueueCommand(command, queueName="main"):
-    CreateNewCommandQueueIfNonExist(queueName)
-    CommandQueues[queueName][commandQueue].put(command)
+    def RunCommand(self, request):
+        if not request:
+            PrintRedAndLog("Request cannot be null or empty")
+            return False
 
+        request = shlex.split(request)
 
-def EnqueueCommands(commands, queueName="main"):
-    CreateNewCommandQueueIfNonExist(queueName)
-    for command in commands:
-        CommandQueues[queueName][commandQueue].put(command)
+        if len(request) < 1:
+            PrintRedAndLog("Request Missing parameters")
+            return False
+        requestedCommand = str.lower(request[0])
+        if requestedCommand == "-help":
+            BaseCommandsHelp()
+            return True
+        if requestedCommand not in CommandMapping:
+            PrintRedAndLog(f"No such supported command '{requestedCommand}'")
+            return False
+        return CommandMapping[requestedCommand](request[1:], self.context)
 
-
-def EnqueueCommandsNext(commands, queueName="main"):
-    CreateNewCommandQueueIfNonExist(queueName)
-    while not CommandQueues[queueName][commandQueue].empty():
-        CommandQueues[queueName][tempQueue].put(CommandQueues[queueName][commandQueue].get())
-    for command in commands:
-        CommandQueues[queueName][commandQueue].put(command)
-    while not CommandQueues[queueName][tempQueue].empty():
-        CommandQueues[queueName][commandQueue].put(CommandQueues[queueName][tempQueue].get())
-
-
-def DeQueueCommand(queueName="main"):
-    CreateNewCommandQueueIfNonExist(queueName)
-    if CommandQueueNotEmpty():
-        return CommandQueues[queueName][commandQueue].get()
-    else:
-        return None
-
-
-def EmptyCommandQueue(queueName="main"):
-    CreateNewCommandQueueIfNonExist(queueName)
-    while not CommandQueues[queueName][commandQueue].empty():
-        CommandQueues[queueName][commandQueue].get()
+    def RunCommands(self):
+        while self.CommandQueueNotEmpty():
+            request = self.DeQueueCommand()
+            success = self.RunCommand(request)
+            if success is not None and not success:
+                self.EmptyCommandQueue()
+                return

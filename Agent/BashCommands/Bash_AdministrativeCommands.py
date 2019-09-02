@@ -3,7 +3,7 @@ from AaSystem.LogAndPrint.Log import PrintAndLog, PrintRedAndLog
 from Agent.BashCommands.BashCommandExecutor import RunSubProcess
 
 
-def AddUser(request):
+def AddUser(request, context):
     if "-help" in request:
         Help_AddUser()
         return
@@ -24,7 +24,7 @@ def AddUser(request):
     return
 
 
-def ChangeUserPassword(request):
+def ChangeUserPassword(request, context):
     if "-help" in request:
         Help_ChangeUserPassword()
         return

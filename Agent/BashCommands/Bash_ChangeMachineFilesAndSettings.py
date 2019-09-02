@@ -3,7 +3,7 @@ from AaSystem.LogAndPrint.Log import PrintAndLog, PrintRedAndLog
 from Agent.BashCommands.BashCommandExecutor import RunSubProcess
 
 
-def DeleteFiles(request):
+def DeleteFiles(request, context):
     if "-help" in request:
         Help_DeleteFiles()
         return
@@ -22,7 +22,7 @@ def DeleteFiles(request):
     PrintRedAndLog("Invalid parameter passed")
 
 
-def CreateFile(request):
+def CreateFile(request, context):
     if "-help" in request:
         Help_DeleteFiles()
         return
@@ -43,7 +43,7 @@ def CreateFile(request):
     PrintRedAndLog("Invalid parameter passed")
 
 
-def CopyFile(request):
+def CopyFile(request, context):
     if "-help" in request:
         Help_DeleteFiles()
         return

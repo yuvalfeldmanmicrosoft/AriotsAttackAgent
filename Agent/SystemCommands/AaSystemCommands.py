@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 import time
 from AaSystem.LogAndPrint.Log import PrintRedAndLog, PrintAndLog
-from AaSystem.EventQueue.CommandQueue import EnqueueCommandsNext
 
 
 TimeConversionsFromSeconds = {
@@ -12,9 +11,9 @@ TimeConversionsFromSeconds = {
 }
 
 
-def Wait(request):
+def Wait(request, context):
     if "-help" in request:
-        Help_Wait(request)
+        Help_Wait()
         return
 
     if not request or len(request) < 2:
@@ -37,9 +36,9 @@ def Wait(request):
     time.sleep(WaitTime)
 
 
-def Loop(request):
+def Loop(request, context):
     if request and request[0] == "-help":
-        Help_Loop(request)
+        Help_Loop()
         return
 
     if not request or len(request) < 2:
@@ -52,14 +51,14 @@ def Loop(request):
         intIterations = int(iterations)
         for i in range(intIterations):
             commandsList.append(command)
-        EnqueueCommandsNext(commandsList)
+        context.EnqueueCommandsNext(commandsList)
     except Exception as ex:
         PrintAndLog(f"Failed to execute Loop on repetitions: {iterations}, command: {command}:\n")
         PrintRedAndLog(ex)
         return
 
 
-def Help_Wait(request):
+def Help_Wait():
     PrintAndLog("\n"
                 "       Sleeps for a requested amount of time\n"
                 "       Command parameters: [WaitTimeType] [WaitTime]\n"
@@ -72,7 +71,7 @@ def Help_Wait(request):
                 "       'WaitTime: The amount of time that will be waited'\n")
 
 
-def Help_Loop(request):
+def Help_Loop():
     PrintAndLog("\n"
                 "       A for loop on the provided function\n"
                 "       Command parameters: [Repetitions] [function]\n"

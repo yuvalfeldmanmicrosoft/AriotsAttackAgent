@@ -4,7 +4,7 @@ from AaSystem.LogAndPrint.Log import PrintAndLog, PrintRedAndLog
 from Agent.BashCommands.BashCommandExecutor import RunSubProcess
 
 
-def GitClone(request):
+def GitClone(request, context):
     if "-help" in request:
         Help_GitClone()
         return
@@ -20,7 +20,7 @@ def GitClone(request):
     return RunSubProcess(f"git clone {clonePath}")
 
 
-def DownloadFile(request):
+def DownloadFile(request, context):
     if "-help" in request:
         Help_DownloadFile()
         return
@@ -34,7 +34,7 @@ def DownloadFile(request):
     return RunSubProcess(f"sudo wget -O {destinationPath} {filePath}")
 
 
-def RetrieveFile(request):
+def RetrieveFile(request, context):
     if "-help" in request:
         Help_RetrieveFile()
         return

@@ -4,7 +4,7 @@ from AaSystem.OperatingSystem.SystemInspector import GetOperatingSystemName
 from Agent.BashCommands.BashCommandExecutor import RunSubProcess
 
 
-def IpConfig(request):
+def IpConfig(request, context):
     if "-help" in request:
         Help_IpConfig()
         return
@@ -14,7 +14,7 @@ def IpConfig(request):
     return RunSubProcess("ipconfig")
 
 
-def LinuxReconnaissance(request):
+def LinuxReconnaissance(request, context):
     if "-help" in request:
         Help_LinuxReconnaissance()
         return
@@ -22,7 +22,7 @@ def LinuxReconnaissance(request):
     return RunSubProcess("uname -n -s -r -v")
 
 
-def WhoAmI(request):
+def WhoAmI(request, context):
     if "-help" in request:
         Help_WhoAmI()
         return
@@ -32,7 +32,7 @@ def WhoAmI(request):
     return RunSubProcess("whoami")
 
 
-def Ping(request):
+def Ping(request, context):
     if "-help" in request:
         Help_Ping()
         return

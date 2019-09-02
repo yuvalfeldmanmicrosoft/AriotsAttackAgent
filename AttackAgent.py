@@ -1,18 +1,18 @@
 #!/usr/bin/python3
 import sys
+from AaSystem.Context.ContextFactory import GetContext
 from AaSystem.LogAndPrint.Log import PrintRedAndLog, PrintAndLog, WriteToLog
 from AaSystem.OperatingSystem.AriotsShield import RunningOnPermittedMachine
-from AaSystem.EventQueue.CommandQueue import EnqueueCommand
-from AaSystem.RequestManagment.PublicEndpointMapper import CreatePublicEndpointMap
-from AaSystem.RequestManagment.RequestProcessor import RunCommands
+from AaSystem.EndpointMap.EndpointMapper import CreatePublicEndpointMap
 
 
 CreatePublicEndpointMap()
 
 
 def EnqueueAndRun(request):
-    EnqueueCommand(request)
-    RunCommands()
+    context = GetContext()
+    context.CommandQueue.EnqueueCommand(request)
+    context.CommandQueue.RunCommands()
 
 
 def WaitForInput():

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 from AaSystem.LogAndPrint.Log import PrintAndLog
-from AaSystem.RequestManagment.PublicEndpointMap import CommandMappingNameByTree
+from AaSystem.EndpointMap.EndpointMap import CommandMappingNameByTree
 
 
 def BaseCommandsHelp():
@@ -20,21 +20,21 @@ def BaseCommandsHelp():
                 "that command type")
 
 
-def BashCommandList(request):
+def BashCommandList(request, context):
     if "-help" not in request:
         return
     freeText = "       Uses bash commands to perform tasks"
     printHelpInfo(freeText, "Bash")
 
 
-def AlertsCommandList(request):
+def AlertsCommandList(request, context):
     if "-help" not in request:
         return
     freeText = "       Uses alerts commands to perform tasks"
     printHelpInfo(freeText, "Alerts")
 
 
-def ScenariosCommandList(request):
+def ScenariosCommandList(request, context):
     if "-help" not in request:
         return
     freeText = "       References text files containing a row delimited list of commands " \
@@ -42,7 +42,7 @@ def ScenariosCommandList(request):
     printHelpInfo(freeText, "Scenario")
 
 
-def SystemCommandList(request):
+def SystemCommandList(request, context):
     if "-help" not in request:
         return
     freeText = "       Perform program and environment commands such as waiting, " \

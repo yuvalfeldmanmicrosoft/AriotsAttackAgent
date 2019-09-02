@@ -1,71 +1,70 @@
 #!/usr/bin/python3
-from AaSystem.EventQueue.CommandQueue import EnqueueCommandsNext
 from AaSystem.LogAndPrint.Log import PrintAndLog
 from Agent.BashCommands.BashCommandExecutor import RunSubProcess
 
 
-def RemovelOfSystemLogs(request):
+def RemovelOfSystemLogs(request, context):
     if "-help" in request:
         Help_RemovelOfSystemLogs()
         return
 
-    EnqueueCommandsNext(["deletefiles -f /var/log/lastlog"])
+    context.EnqueueCommandsNext(["deletefiles -f /var/log/lastlog"])
 
 
-def Ransomware(request):
+def Ransomware(request, context):
     if "-help" in request:
         Help_Ransomware()
         return
 
-    EnqueueCommandsNext(["createFile -f test.GNNCRY"])
+    context.EnqueueCommandsNext(["createFile -f test.GNNCRY"])
 
 
-def OverrideLinuxFiles(request):
+def OverrideLinuxFiles(request, context):
     if "-help" in request:
         Help_OverrideLinuxFiles()
         return
 
-    EnqueueCommandsNext(["copyfile -f /bin/netstat a"])
+    context.EnqueueCommandsNext(["copyfile -f /bin/netstat a"])
 
 
-def LinuxBackdoor(request):
+def LinuxBackdoor(request, context):
     if "-help" in request:
         Help_LinuxBackdoor()
         return
 
-    EnqueueCommandsNext(["createfile -f-bus notifier"])
+    context.EnqueueCommandsNext(["createfile -f-bus notifier"])
 
 
-def FairwareMalware(request):
+def FairwareMalware(request, context):
     if "-help" in request:
         Help_FairwareMalware()
         return
 
-    EnqueueCommandsNext(["deletefiles /data/"])
+    context.EnqueueCommandsNext(["deletefiles /data/"])
 
 
-def EgressData(request):
+def EgressData(request, context):
     if "-help" in request:
         Help_EgressData()
         return
 
-    return RunSubProcess("bash /dev/tcp/")
+    context.EnqueueCommandsNext(["servicestop bash /dev/tcp/"])
 
 
-def DisableFirewall(request):
+def DisableFirewall(request, context):
     if "-help" in request:
         Help_DisableFirewall()
         return
 
-    EnqueueCommandsNext(["createfile -f f0VMRgIBAQ"])
+    context.EnqueueCommandsNext(["createfile -f f0VMRgIBAQ"])
 
 
-def CommonBots(request):
+def CommonBots(request, context):
     if "-help" in request:
         Help_CommonBots()
         return
 
-    EnqueueCommandsNext(["createfile -f RTEGFN01.dat"])
+    context.EnqueueCommandsNext(["createfile -f RTEGFN01.dat"])
 
 
 def Help_RemovelOfSystemLogs():

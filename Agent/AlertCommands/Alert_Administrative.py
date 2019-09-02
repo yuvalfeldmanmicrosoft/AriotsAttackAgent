@@ -1,17 +1,16 @@
 #!/usr/bin/python3
-from AaSystem.EventQueue.CommandQueue import EnqueueCommandsNext
 from AaSystem.LogAndPrint.Log import PrintAndLog
 from Agent.BashCommands.BashCommandExecutor import RunSubProcess
 
 
-def AddSuspiciousUser(request):
+def AddSuspiciousUser(request, context):
     if "-help" in request:
         Help_AddSuspiciousUser()
         return
-    EnqueueCommandsNext(["adduser -g 0"])
+    context.EnqueueCommandsNext(["adduser -g 0"])
 
 
-def PrivilegedContainer(request):
+def PrivilegedContainer(request, context):
     if "-help" in request:
         Help_PrivilegedContainer()
         return
@@ -19,19 +18,19 @@ def PrivilegedContainer(request):
     return RunSubProcess("docker run redis --privileged")
 
 
-def DisableAuditdLogging(request):
+def DisableAuditdLogging(request, context):
     if "-help" in request:
         Help_DisableAuditdLogging()
         return
-    EnqueueCommandsNext(["servicestop auditd"])
+    context.EnqueueCommandsNext(["servicestop auditd"])
 
 
-def SuspiciousNohup(request):
+def SuspiciousNohup(request, context):
     if "-help" in request:
         Help_SuspiciousNohup()
         return
 
-    return RunSubProcess("nohup cat /tmp/")
+    context.EnqueueCommandsNext(["custombash nohup cat /tmp/"])
 
 
 def Help_AddSuspiciousUser():

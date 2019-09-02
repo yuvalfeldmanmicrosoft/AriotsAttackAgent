@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-import Agent.ProcessControl.ProcessCommands
-import Agent.SystemCommands.AaSystemCommands
-import Agent.BatchCommands.BatchCommandHandler
+from AaSystem.EndpointMap.EndpointMap import CommandMappingNameByTree, CommandMapping
+from AaSystem.Reflection.Reflect import GetPublicFacingFunctionsFromPath
 import Agent.BashCommands.Bash_AdministrativeCommands
 import Agent.BashCommands.Bash_ChangeMachineFilesAndSettings
 import Agent.BashCommands.Bash_CustomCommand
@@ -12,11 +11,11 @@ import Agent.AlertCommands.Alert_Administrative
 import Agent.AlertCommands.Alerts_ChangeMachineFilesAndSettings
 import Agent.AlertCommands.Alerts_FileRetrieval
 import Agent.AlertCommands.Alerts_ProcessAndPorts
-import Agent.AlertCommands.Alerts_ProcessAndPorts
+import Agent.SystemCommands.AaSystemCommands
+import Agent.ProcessControl.ProcessCommands
+import Agent.BatchCommands.BatchCommandHandler
 import Agent.BasicHelpers.BasicHelpCommands
 import AaSystem.AaSystemControl.AaUpgrade
-from AaSystem.RequestManagment.PublicEndpointMap import CommandMappingNameByTree, CommandMapping
-from AaSystem.Reflection.Reflect import GetPublicFacingFunctionsFromPath
 
 CommandTypes = {
     "Bash":

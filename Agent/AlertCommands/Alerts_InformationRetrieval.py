@@ -1,22 +1,21 @@
 #!/usr/bin/python3
-from AaSystem.EventQueue.CommandQueue import EnqueueCommandsNext
 from AaSystem.LogAndPrint.Log import PrintAndLog
 
 
-def LinuxReconnaissance(request):
+def LinuxReconnaissance(request, context):
     if "-help" in request:
         Help_LinuxReconnaissance()
         return
 
-    EnqueueCommandsNext(["custombash uname -n -s -r -v"])
+    context.EnqueueCommandsNext(["custombash uname -n -s -r -v"])
 
 
-def ClearHistoryFile(request):
+def ClearHistoryFile(request, context):
     if "-help" in request:
         Help_ClearHistoryFile()
         return
 
-    EnqueueCommandsNext(["custombash history -c"])
+    context.EnqueueCommandsNext(["custombash history -c"])
 
 
 def Help_LinuxReconnaissance():
