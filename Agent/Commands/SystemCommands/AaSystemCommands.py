@@ -58,7 +58,7 @@ class Loop(ICommand):
             intIterations = int(iterations)
             for i in range(intIterations):
                 commandsList.append(command)
-            self.context.EnqueueCommandsNext(commandsList)
+            self.context.CommandQueue.EnqueueCommandsNext(commandsList)
         except Exception as ex:
             PrintAndLog(f"Failed to execute Loop on repetitions: {iterations}, command: {command}:\n")
             PrintRedAndLog(ex)

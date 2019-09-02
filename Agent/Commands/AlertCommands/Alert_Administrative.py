@@ -7,7 +7,7 @@ class AddSuspiciousUser(ICommand):
     def Execute(self):
         if self.CheckHelpRequested():
             return
-        self.context.EnqueueCommandsNext(["adduser -g 0"])
+        self.context.CommandQueue.EnqueueCommandsNext(["adduser -g 0"])
 
     def HelpRequested(self):
         return PrintAndLog("\n"
@@ -19,7 +19,7 @@ class PrivilegedContainer(ICommand):
     def Execute(self):
         if self.CheckHelpRequested():
             return
-        self.context.EnqueueCommandsNext("custombash docker run redis --privileged")
+        self.context.CommandQueue.EnqueueCommandsNext("custombash docker run redis --privileged")
 
     def HelpRequested(self):
         return PrintAndLog("\n"
@@ -31,7 +31,7 @@ class DisableAuditdLogging(ICommand):
     def Execute(self):
         if self.CheckHelpRequested():
             return
-        self.context.EnqueueCommandsNext(["servicestop auditd"])
+        self.context.CommandQueue.EnqueueCommandsNext(["servicestop auditd"])
 
     def HelpRequested(self):
         return PrintAndLog("\n"
@@ -43,7 +43,7 @@ class SuspiciousNohup(ICommand):
     def Execute(self):
         if self.CheckHelpRequested():
             return
-        self.context.EnqueueCommandsNext(["custombash nohup cat /tmp/"])
+        self.context.CommandQueue.EnqueueCommandsNext(["custombash nohup cat /tmp/"])
 
     def HelpRequested(self):
         return PrintAndLog("\n"

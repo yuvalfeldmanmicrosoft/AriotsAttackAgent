@@ -3,10 +3,9 @@ import ntpath
 from AaSystem.LogAndPrint.Log import PrintAndLog, PrintRedAndLog
 from os import listdir
 from os.path import isfile, join
-
 from Agent.CommandInterface.ICommand import ICommand
 
-PreMadeBatchCommandsPath = "Agent\\BatchCommands\Scripts\\"
+PreMadeBatchCommandsPath = "Agent\\Commands\\BatchCommands\Scripts\\"
 
 
 def GetAllPreMadeBatchNames():
@@ -33,7 +32,7 @@ class RunScenario(ICommand):
             with open(filePath, "r") as file:
                 commandLines = list(filter(lambda a: not a.startswith('#'), list(file.read().splitlines())))
                 PrintAndLog(f"Adding {len(commandLines)} Commands from {ntpath.basename(filePath)}")
-                self.context.EnqueueCommandsNext(commandLines)
+                self.context.CommandQueue.EnqueueCommandsNext(commandLines)
             file.close()
         except Exception as ex:
             print(f"Failed to load command batch file, exception encountered:\n")

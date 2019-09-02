@@ -7,7 +7,7 @@ class ReverseShellAlert(ICommand):
     def Execute(self):
         if self.CheckHelpRequested():
             return
-        self.context.EnqueueCommandsNext(f"reverseshell /bin/sh")
+        self.context.CommandQueue.EnqueueCommandsNext(f"reverseshell /bin/sh")
 
     def HelpRequested(self):
         return PrintAndLog("\n"

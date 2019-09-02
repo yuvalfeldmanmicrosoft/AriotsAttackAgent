@@ -7,7 +7,7 @@ class LinuxReconnaissance(ICommand):
     def Execute(self):
         if self.CheckHelpRequested():
             return
-        self.context.EnqueueCommandsNext(["custombash uname -n -s -r -v"])
+        self.context.CommandQueue.EnqueueCommandsNext(["custombash uname -n -s -r -v"])
 
     def HelpRequested(self):
         return PrintAndLog("       Performs the bash command: 'uname -n -s -r -v'\n"
@@ -18,7 +18,7 @@ class ClearHistoryFile(ICommand):
     def Execute(self):
         if self.CheckHelpRequested():
             return
-        self.context.EnqueueCommandsNext(["custombash history -c"])
+        self.context.CommandQueue.EnqueueCommandsNext(["custombash history -c"])
 
     def HelpRequested(self):
         return PrintAndLog("\n"

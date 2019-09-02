@@ -7,7 +7,7 @@ class RemovelOfSystemLogs(ICommand):
     def Execute(self):
         if self.CheckHelpRequested():
             return
-        self.context.EnqueueCommandsNext(["deletefiles -f /var/log/lastlog"])
+        self.context.CommandQueue.EnqueueCommandsNext(["deletefiles -f /var/log/lastlog"])
 
     def HelpRequested(self):
         return PrintAndLog("\n"
@@ -19,7 +19,7 @@ class Ransomware(ICommand):
     def Execute(self):
         if self.CheckHelpRequested():
             return
-        self.context.EnqueueCommandsNext(["createFile -f test.GNNCRY"])
+        self.context.CommandQueue.EnqueueCommandsNext(["createFile -f test.GNNCRY"])
 
     def HelpRequested(self):
         return PrintAndLog("\n"
@@ -31,7 +31,7 @@ class OverrideLinuxFiles(ICommand):
     def Execute(self):
         if self.CheckHelpRequested():
             return
-        self.context.EnqueueCommandsNext(["copyfile -f /bin/netstat a"])
+        self.context.CommandQueue.EnqueueCommandsNext(["copyfile -f /bin/netstat a"])
 
     def HelpRequested(self):
         return PrintAndLog("\n"
@@ -43,7 +43,7 @@ class LinuxBackdoor(ICommand):
     def Execute(self):
         if self.CheckHelpRequested():
             return
-        self.context.EnqueueCommandsNext(["createfile -f-bus notifier"])
+        self.context.CommandQueue.EnqueueCommandsNext(["createfile -f-bus notifier"])
 
     def HelpRequested(self):
         return PrintAndLog("\n"
@@ -55,7 +55,7 @@ class FairwareMalware(ICommand):
     def Execute(self):
         if self.CheckHelpRequested():
             return
-        self.context.EnqueueCommandsNext(["deletefiles /data/"])
+        self.context.CommandQueue.EnqueueCommandsNext(["deletefiles /data/"])
 
     def HelpRequested(self):
         return PrintAndLog("\n"
@@ -67,7 +67,7 @@ class EgressData(ICommand):
     def Execute(self):
         if self.CheckHelpRequested():
             return
-        self.context.EnqueueCommandsNext(["servicestop bash /dev/tcp/"])
+        self.context.CommandQueue.EnqueueCommandsNext(["servicestop bash /dev/tcp/"])
 
     def HelpRequested(self):
         return PrintAndLog("\n"
@@ -79,7 +79,7 @@ class DisableFirewall(ICommand):
     def Execute(self):
         if self.CheckHelpRequested():
             return
-        self.context.EnqueueCommandsNext(["createfile -f f0VMRgIBAQ"])
+        self.context.CommandQueue.EnqueueCommandsNext(["createfile -f f0VMRgIBAQ"])
 
     def HelpRequested(self):
         return PrintAndLog("\n"
@@ -91,7 +91,7 @@ class CommonBots(ICommand):
     def Execute(self):
         if self.CheckHelpRequested():
             return
-        self.context.EnqueueCommandsNext(["createfile -f RTEGFN01.dat"])
+        self.context.CommandQueue.EnqueueCommandsNext(["createfile -f RTEGFN01.dat"])
 
     def HelpRequested(self):
         return PrintAndLog("\n"

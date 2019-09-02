@@ -16,6 +16,7 @@ import Agent.Commands.ProcessControl.ProcessCommands
 import Agent.Commands.BatchCommands.BatchCommandHandler
 import Agent.Commands.BasicHelpers.BasicHelpCommands
 import AaSystem.AaSystemControl.AaUpgrade
+import Agent.Commands.SystemCommands.AaSystemCommands
 
 CommandTypes = {
     "Bash":
@@ -36,7 +37,8 @@ CommandTypes = {
         ],
     "System":
         [
-            "Agent.Commands.ProcessControl.ProcessCommands"
+            "Agent.Commands.ProcessControl.ProcessCommands",
+            "Agent.Commands.SystemCommands.AaSystemCommands"
         ],
     "Scenario":
         [

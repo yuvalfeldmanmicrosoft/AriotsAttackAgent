@@ -1,53 +1,28 @@
 #!/usr/bin/python3
+from multiprocessing import Process
+from AaSystem.Context.ContextFactory import GetContext
 from AaSystem.LogAndPrint.Log import PrintAndLog
 from Agent.CommandInterface.ICommand import ICommand
+
+
+def InitQueueStartProcess(command):
+    context = GetContext()
+    context.CommandQueue.EnqueueCommand(command)
+    context.CommandQueue.RunCommands()
 
 
 class RunProcess(ICommand):
     def Execute(self):
         if self.CheckHelpRequested():
             return
-        print("running!")
-
-    def HelpRequested(self):
-        PrintAndLog("\n"
-                    "       StopProcess help requested\n")
-
-
-class StopProcess(ICommand):
-    def Execute(self):
-        if self.CheckHelpRequested():
+        if self.CheckMinimunRequiredParameters(1):
             return
-        print("stopping!")
+        asyncCommand = ' '.join(self.request[0:])
+        Process(target=InitQueueStartProcess, args=(asyncCommand,)).start()
 
     def HelpRequested(self):
         PrintAndLog("\n"
-                    "       StopProcess help requested\n")
+                    "       Run async process help requested\n")
 
 
-class GetProcess(ICommand):
-    def Execute(self):
-        if self.CheckHelpRequested():
-            return
-        print("getting!")
-
-    def HelpRequested(self):
-        PrintAndLog("\n"
-                    "       GetProcess help requested\n")
-
-
-class WaitForProcess(ICommand):
-    def Execute(self):
-        if self.CheckHelpRequested():
-            return
-        print("waiting!")
-
-    def HelpRequested(self):
-        PrintAndLog("\n"
-                    "       WaitForProcess help requested\n")
-
-
-RunProcess.PublicFacing = "runProcess"
-StopProcess.PublicFacing = "stopProcess"
-GetProcess.PublicFacing = "getProcess"
-WaitForProcess.PublicFacing = "waitProcess"
+# RunProcess.PublicFacing = "async"
