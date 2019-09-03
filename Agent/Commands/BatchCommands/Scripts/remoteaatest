@@ -1,0 +1,1 @@
+ssh 52.164.226.9 22 yuval A123456789A! 'attackagent custombash "echo hello world"'
