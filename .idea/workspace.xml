@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="18d4f685-5b87-4468-8335-a73e544c5d36" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AaSystem/EndpointMap/EndpointMapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/AaSystem/EndpointMap/EndpointMapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/Commands/BasicHelpers/BasicHelpCommands.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/Commands/BasicHelpers/BasicHelpCommands.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/Commands/BashCommands/Bash_ChangeMachineFilesAndSettings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/Commands/BashCommands/Bash_ChangeMachineFilesAndSettings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/Commands/RemoteConnectionCommands/RemoteConnectionCommands.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/Commands/RemoteConnectionCommands/RemoteConnectionCommands.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -195,6 +195,13 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Agent/Commands/RemoteConnectionCommands/RemoteConnectionCommands.py</url>
+          <line>72</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">

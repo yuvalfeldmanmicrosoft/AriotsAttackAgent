@@ -82,8 +82,8 @@ class CopyFile(ICommand):
                            "       Copies a file or directory'\n"
                            "       copyfile [copyType] [originPath] [destinationPath]\n"
                            "                copyType options:\n"
-                           "                     '-f' - Copy single empty file\n"
-                           "                     '-d' - Copy a single empty directory\n"
+                           "                     '-f' - Copy single file\n"
+                           "                     '-d' - Copy a single directory\n"
                            "                'originPath' - the file or directory to copy\n"
                            "                'destinationPath' - the path where the copy will be created\n"
                            )
