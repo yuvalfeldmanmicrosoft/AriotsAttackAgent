@@ -67,7 +67,7 @@ class CommandQueue:
             try:
                 command.Execute()
             except Exception as ex:
-                PrintRedAndLog(f"Failed command , exception encountered:\n\n        {ex}\n")
+                PrintRedAndLog(f"Failed running command, exception encountered:\n\n        {ex}\n")
                 self.EmptyCommandQueue()
                 return
 

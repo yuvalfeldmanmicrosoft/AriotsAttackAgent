@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+import itertools
 import time
 from AaSystem.LogAndPrint.Log import PrintRedAndLog, PrintAndLog
 from Agent.CommandInterface.ICommand import ICommand
@@ -104,7 +105,17 @@ def GetParamArrayFromString(string):
 
 
 def GetCommandsFromSwapDictionary(command, swapDictionary):
-    return []
+    valuesList = list(swapDictionary.values())
+    keysList = list(swapDictionary.keys())
+    allOptions = itertools.product(*valuesList)
+    paramCount = len(keysList)
+    results = []
+    for option in allOptions:
+        newCommand = command
+        for i in range(paramCount):
+            newCommand = newCommand.replace(keysList[i], option[i])
+        results.append(newCommand)
+    return results
 
 
 def GetNewCommands(readSource, command, swaps):
@@ -150,9 +161,10 @@ class AsyncForEach(ICommand):
             return
         if self.CheckMinimunRequiredParameters(4):
             return
-        newCommandsString = ' '.join(GetNewCommands(self.request[1], self.request[2], self.request[3:]))
+        newCommands = GetNewCommands(self.request[1], self.request[2], self.request[3:])
+        newCommandsString = ' '.join([f"\'{option}\'" for option in newCommands])
         processPoolCommand = f"asyncpool {self.request[0]} {newCommandsString}"
-        self.context.CommandQueue.EnqueueCommandsNext(processPoolCommand)
+        self.context.CommandQueue.EnqueueCommandsNext([processPoolCommand])
 
     def HelpRequested(self):
         PrintAndLog("\n"
@@ -166,4 +178,5 @@ class AsyncForEach(ICommand):
 
 Wait.PublicFacing = "wait"
 Loop.PublicFacing = "loop"
+ForEach.PublicFacing = "foreach"
 AsyncForEach.PublicFacing = "asyncforeach"
