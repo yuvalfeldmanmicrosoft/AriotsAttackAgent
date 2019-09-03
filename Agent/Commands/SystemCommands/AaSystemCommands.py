@@ -147,12 +147,25 @@ class ForEach(ICommand):
 
     def HelpRequested(self):
         PrintAndLog("\n"
-                    "       A for loop on the provided function\n"
-                    "       Command parameters: [Repetitions] [function]\n"
-                    "                     'Repetitions' - An integer indicating the amount of "
-                    "times to perform the provided function\n"
-                    "                     'function' - an Attack Agent function surrounded "
-                    "by parentheses that will be repeated in the loop\n")
+                    "       foreach receives a command with keys that need to be replaced and a list of key value "
+                    "pairs and creates commands of all the possible replacements for keys in the original command "
+                    "with key value options\n"
+                    "       Command parameters: [command] [keyValuePairType] [keyValuePairs] [keyValuePairs]...\n"
+                    "                     'command' - The command that will be run. The command must be encased in"
+                    "quotations and must have keys that will be replaced matching the key in the key value pairs\n"
+                    "                     'keyValuePairType' - Can be either -p or -f:"
+                    "                               '-p' - indicating the key value pair will be a key, an equals "
+                    "sign and a list divided by commas\n"
+                    "                               '-f' - indicating the key value pair will be a key, an quals"
+                    "sign and a url to a list of values divided by commas\n"
+                    "                       'keyValuePair' - a key which will be replaced in the command and a list"
+                    "of values seperated by commas, a command option will be generated for each permutation available "
+                    "of key value pairs\n\n"
+                    "       for example: foreach -p 'custombash echo x' x='1,2,3' will result in three commands "
+                    "replacing x with 1, 2 and 3\n"
+                    "       additional example: foreach -p 'custombash echo x y' x='1,2,3' y='4,5,6 will result in 9"
+                    "commands that will be executed for all the replacements of x and y with 1, 2, 3 and 4, 5, 6"
+                    "respectively")
 
 
 class AsyncForEach(ICommand):
@@ -168,12 +181,29 @@ class AsyncForEach(ICommand):
 
     def HelpRequested(self):
         PrintAndLog("\n"
-                    "       A for loop on the provided function\n"
-                    "       Command parameters: [Repetitions] [function]\n"
-                    "                     'Repetitions' - An integer indicating the amount of "
-                    "times to perform the provided function\n"
-                    "                     'function' - an Attack Agent function surrounded "
-                    "by parentheses that will be repeated in the loop\n")
+                    "       asyncforeach works like foreach but receives an additional parameter processCount "
+                    "indicating the amount of processes the workload will be split"
+                    "       asyncforeach receives a command with keys that need to be replaced and a list of key value "
+                    "pairs and creates commands of all the possible replacements for keys in the original command "
+                    "with key value options\n"
+                    "       Command parameters: [command] [processCount] [keyValuePairType] [keyValuePairs]"
+                    " [keyValuePairs]...\n"
+                    "                     'command' - The command that will be run. The command must be encased in"
+                    "quotations and must have keys that will be replaced matching the key in the key value pairs\n"
+                    "                     'processCount' - the amount of processes the commands created will run on"
+                    "                     'keyValuePairType' - Can be either -p or -f:"
+                    "                               '-p' - indicating the key value pair will be a key, an equals "
+                    "sign and a list divided by commas\n"
+                    "                               '-f' - indicating the key value pair will be a key, an quals"
+                    "sign and a url to a list of values divided by commas\n"
+                    "                       'keyValuePair' - a key which will be replaced in the command and a list"
+                    "of values seperated by commas, a command option will be generated for each permutation available "
+                    "of key value pairs\n\n"
+                    "       for example: foreach -p 'custombash echo x' x='1,2,3' will result in three commands "
+                    "replacing x with 1, 2 and 3\n"
+                    "       additional example: foreach -p 'custombash echo x y' x='1,2,3' y='4,5,6 will result in 9"
+                    "commands that will be executed for all the replacements of x and y with 1, 2, 3 and 4, 5, 6"
+                    "respectively")
 
 
 Wait.PublicFacing = "wait"
