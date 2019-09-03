@@ -1,0 +1,1 @@
+asyncforeach 3 -p 'custombash echo x' x="1,2,3"
