@@ -32,6 +32,8 @@ class BaseCommandsHelp(ICommand):
                     "commands to run, places these commands at the front of the queue\n"
                     "               System              Perform program and environment commands such as waiting, "
                     "looping, handling environment variables and so on\n"
+                    "               Remote              Performs commands, connection attempts and sniffing on"
+                    "remote machines\n"
                     "               Upgrade             Upgrades to latest version of Ariots Attack Agent - "
                     "currently only supported on linux machines\n\n"
                     "       Type -help with a command type of the listed commands to get a list of available "
@@ -84,8 +86,21 @@ class SystemCommandList(ICommand):
         printHelpInfo(freeText, "System")
 
 
+class RemoteConnectionCommandsList(ICommand):
+    def Execute(self):
+        if "-help" not in self.request:
+            return
+        self.HelpRequested()
+
+    def HelpRequested(self):
+        freeText = "       Perform actions on remote machines such as different connection types, sniffing and " \
+                   "remotely executed commands"
+        printHelpInfo(freeText, "Remote")
+
+
 BashCommandList.PublicFacing = "bash"
 ScenariosCommandList.PublicFacing = "scenarios"
 SystemCommandList.PublicFacing = "system"
 AlertsCommandList.PublicFacing = "alerts"
 BaseCommandsHelp.PublicFacing = "-help"
+RemoteConnectionCommandsList.PublicFacing = "remote"

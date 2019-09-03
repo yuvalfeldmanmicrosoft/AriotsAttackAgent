@@ -17,6 +17,7 @@ import Agent.Commands.BatchCommands.BatchCommandHandler
 import Agent.Commands.BasicHelpers.BasicHelpCommands
 import AaSystem.AaSystemControl.AaUpgrade
 import Agent.Commands.SystemCommands.AaSystemCommands
+import Agent.Commands.RemoteConnectionCommands.RemoteConnectionCommands
 
 CommandTypes = {
     "Bash":
@@ -42,7 +43,7 @@ CommandTypes = {
         ],
     "Scenario":
         [
-            "Agent.Commands.BatchCommands.BatchCommandHandler"
+            "Agent.Commands.BatchCommands.BatchCommandHandler",
         ],
     "BasicHelp":
         [
@@ -51,6 +52,10 @@ CommandTypes = {
     "Program":
         [
             "AaSystem.AaSystemControl.AaUpgrade"
+        ],
+    "Remote":
+        [
+            "Agent.Commands.RemoteConnectionCommands.RemoteConnectionCommands"
         ],
 }
 
