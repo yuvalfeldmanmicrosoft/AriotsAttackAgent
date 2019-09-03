@@ -2,6 +2,18 @@
 import datetime
 import sys
 
+import logging
+
+logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
+
+handler = logging.StreamHandler(sys.stdout)
+handler.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
+
+
 from AaSystem.LogAndPrint.Colors import CommandLineColors
 from AaSystem.OperatingSystem.SystemInspector import GetOperatingSystemName
 
@@ -38,17 +50,16 @@ def WriteToLog(text):
 
 
 def PrintColor(text, color):
-    print(f"{color}{text}{CommandLineColors.ENDCOLOR}")
+    logger.info(f"{color}{text}{CommandLineColors.ENDCOLOR}")
 
 
 def PrintColorAndLog(text, color):
-    print(f"{color}{text}{CommandLineColors.ENDCOLOR}")
+    logger.info(f"{color}{text}{CommandLineColors.ENDCOLOR}")
     WriteToLog(text)
 
 
 def PrintAndLog(text):
-    print(text)
-    sys.stdout.flush()
+    logger.info(text)
     WriteToLog(text)
 
 

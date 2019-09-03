@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-import multiprocessing
-from multiprocessing import Process
+from concurrent.futures.process import ProcessPoolExecutor
 from AaSystem.Context.ContextFactory import GetContext
 from AaSystem.LogAndPrint.Log import PrintAndLog
 from Agent.CommandInterface.ICommand import ICommand
@@ -19,7 +18,9 @@ class RunProcess(ICommand):
         if self.CheckMinimunRequiredParameters(1):
             return
         asyncCommand = ' '.join(self.request[0:])
-        Process(target=InitQueueStartProcess, args=(asyncCommand,)).start()
+
+        with ProcessPoolExecutor() as executor:
+            executor.submit(InitQueueStartProcess, (asyncCommand,))
 
     def HelpRequested(self):
         PrintAndLog("\n"
@@ -37,8 +38,10 @@ class RunProcessPool(ICommand):
             return
         poolSize = self.request[0]
         asyncCommands = self.request[1:]
-        p = multiprocessing.Pool(int(poolSize))
-        p.map(InitQueueStartProcess, asyncCommands)
+
+        with ProcessPoolExecutor(max_workers=10) as executor:
+            for cmd in asyncCommands:
+                executor.submit(InitQueueStartProcess, cmd)
 
     def HelpRequested(self):
         PrintAndLog("\n"

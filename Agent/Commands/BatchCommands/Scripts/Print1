@@ -1,2 +1,2 @@
-custombash echo 111111111111111111111111111111111111111111111111111
+custombash echo hello world
 wait -s 10
