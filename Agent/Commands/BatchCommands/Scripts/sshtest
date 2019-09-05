@@ -1,1 +1,0 @@
-ssh 52.178.132.17 22 yuval A123456789A! 'echo "Attack agent was here at date $(date)" >> attackagent.txt' 'ls' 'cat attackagent.txt'
