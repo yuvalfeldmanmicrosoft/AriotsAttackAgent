@@ -5,7 +5,7 @@ from os import listdir
 from os.path import isfile, join
 from Agent.CommandInterface.ICommand import ICommand
 
-PreMadeBatchCommandsPath = "Agent\\Commands\\BatchCommands\Scripts\\"
+PreMadeBatchCommandsPath = "Agent\\Commands\\BatchCommands\\Scripts\\"
 
 
 def GetAllPreMadeBatchNames():
